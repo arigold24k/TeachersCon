@@ -1,0 +1,33 @@
+PROPOSAL
+
+Group: 
+Title: Parent Teacher HUB
+
+Overview: Parent/Teacher inferface application. Encrypted chats, photos database, events calender
+  
+
+  Must use a Node and Express Web Server
+    - Must be backed by a MySQL Database with a Sequelize ORM  
+    - Must have both GET and POST routes for retrieving and adding new data
+  Must incorporate Basic Testing Framework 
+  Must be deployed using Heroku (with Data)
+
+Socket.io
+  Must utilize at least one new library, package, or technology
+
+  Must have a polished frontend / UI 
+  Must have folder structure that meets MVC Paradigm
+  Must meet good quality coding standards (indentation, scoping, naming)
+
+
+
+Page 1
+Login/SignUp page (user validation)
+
+
+Page 2
+Members' Page with Links:
+- Parent and Teacher Chat
+- Events Calender
+- Photos
+- Feedback
