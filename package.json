@@ -1,0 +1,29 @@
+{
+  "name": "TeachersCon",
+  "version": "1.0.0",
+  "description": "Teacher Parent Student App",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arigold24k/TeachersCon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arigold24k/TeachersCon/issues"
+  },
+  "homepage": "https://github.com/arigold24k/TeachersCon#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.11",
+    "mysql2": "^1.5.1",
+    "sequelize": "^4.22.11"
+  }
+}
