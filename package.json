@@ -1,0 +1,26 @@
+{
+  "name": "TeachersCon",
+  "version": "1.0.0",
+  "description": "Sure",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arigold24k/TeachersCon.git"
+  },
+  "author": "Ariel, Noria, Rachel, Andy",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "latest",
+    "express": "latest",
+    "express-handlebars": "latest",
+    "method-override": "latest",
+    "mysql": "latest",
+    "mysql2": "latest",
+    "sequelize": "latest",
+    "sequelize-cli": "latest"
+  }
+}
