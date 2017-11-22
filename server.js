@@ -17,7 +17,7 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
-var routes = require('./controllers/????????????????.js');
+var routes = require('./controllers/controller.js');
 app.use('/', routes);
 // app.use('/create', routes);
 // app.use('/update', routes);
