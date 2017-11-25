@@ -10,49 +10,44 @@
 </head>
 
 <body>
-    <div class="col-xs-12">
-
+    <div class="col-xs-12 text-center">
         <div class="row">
             <p>
                 <a href="Index.html">Home</a> || 
                 <a href="Members.html">Log In</a>
             </p>
             <h1>Sign Up</h1>
-            <h4>It's free and secure</h4>
             <hr>
-            <form>
-                <div class="form-group">
-                    <label for="userName">Your Name</label>
-                    <input type="text" class="form-control" id="userName" placeholder="Full name here">
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="text" class="form-control" id="email" placeholder="Enter Email">
-                </div>
-
-                <div class="form-group">
-                    <label for="phoneNum">Phone Number</label>
-                    <input type="text" class="form-control" id="phoneNum" placeholder="Start with Area Code">
-                </div>
-
-                <div class="form-group">
-                    <label for="address">Address</label>
-                    <input type="text" class="form-control" id="address" placeholder="Include Post Code">
-                </div>
-                <hr>
-
-                <div class="form-group">
-                    <label for="childOne">First Child</label>
-                    <input type="text" class="form-control" id="childOne" placeholder="Full name here">
-                </div>
-                
-                <button type="submit" class="btn btn-primary" id="addChild">Add Child</button> || 
-                
-                <button type="submit" class="btn btn-primary" id="submit">Create Account</button>
-            </form>
-            <hr>
+            <p>Please fill out ALL the required fields (*)</p>
         </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-xs-12 text-center">
+        <span class="col-lg-3 col-md-3 col-xs-1"></span>
+        <span class="col-lg-6 col-md-6 col-xs-10">
+            <div>
+                <label for="userName">Your Name</label>
+                <input type="text" class="form-control" id="userName" placeholder="*Full name here"> <br>
+
+                <label for="email">Email Address</label>
+                <input type="text" class="form-control" id="email" placeholder="*Enter Email"> <br>
+
+                <label for="phoneNum">Phone Number</label>
+                <input type="text" class="form-control" id="phoneNum" placeholder="*Start with Area Code"> <br>
+
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address" placeholder="Include Post Code">
+            <hr>
+
+                <label for="childOne">First Child</label>
+                <input type="text" class="form-control" id="childOne" placeholder="Full name here"> <br>
+            </div>
+            <hr>
+            
+            <button type="submit" class="btn btn-primary" id="addChild">Add Child</button> || 
+            
+            <button type="submit" class="btn btn-primary" id="createAcc">Create Account</button>
+        </span>
     </div>
 
     <footer class="text-center">

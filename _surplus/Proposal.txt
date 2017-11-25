@@ -1,7 +1,7 @@
 PROPOSAL
 
 Group: 
-Title: Parent Teacher HUB
+Title: Teachers Con
 
 Overview: Parent/Teacher inferface application. Encrypted chats, photos database, events calender
   
@@ -29,5 +29,4 @@ Page 2
 Members' Page with Links:
 - Parent and Teacher Chat
 - Events Calender
-- Photos
 - Feedback
