@@ -1,0 +1,21 @@
+<h1>Teachers Con!</h1>
+{{#}}
+  <pre>
+    {{#if this.announcements}}
+      <span>
+        Today's Announcements: {{announcement}}
+        {{else}}
+        {{empty}} 
+      </span>
+
+      <form action="/update/{{ id }}" method="post">
+        <button type="submit">Log In</button>
+        {{/if}}  
+      </form> 
+  </pre>
+{{/each}}
+
+<form action="/create" method="post">
+  <textarea name="item" rows="2" cols="30"></textarea>
+  <button type="submit">Enter Your Name</button>
+<form>

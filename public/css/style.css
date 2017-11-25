@@ -1,0 +1,224 @@
+/*Main*/
+* {
+	box-sizing: border-box;
+}
+
+body{
+	font-size: 18px;
+	line-height: 34px;
+	font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+	color: #777;
+	background: #efefef;
+}
+
+nav{
+	float: right;
+	margin-top: 25px;
+}
+
+nav a{
+	color: #999;
+	text-decoration: none;
+	margin-left: 15px;
+	display: inline-block;
+	border-left: 1px solid #efefef;
+	padding-left: 15px;
+	line-height: 18px;
+}
+
+nav a:first child {
+	border-left: 0 none;
+}
+
+h1, h2, h3, p {
+	margin-bottom: 20px;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+
+h1, h2, h3 {
+	font-family: 'Georgia', Times, Times New Roman, serif;
+	font-weight: 700;
+	color: #4aaaa5;
+}
+
+h1 {
+	font-size: 30px;
+	line-height: 48px;
+	border-bottom: 3px solid #ddd;
+	padding-bottom: 20px;
+}
+
+h2, h3 {
+	font-size: 22px;
+}
+
+#smallCaps {
+	font-variant-caps: small-caps;
+}
+
+#navbar{
+	background: #fff;
+	margin: 0;
+	z-index: 99;
+	color: #fff;
+	overflow: auto;
+	border-bottom: 5px solid #ccc;
+	position: fixed;
+	width: 100%;
+}
+
+#logo{
+	width: 250px;
+	height: 90px;
+	background: #4aaaa5;
+	float: left;
+	font-family: 'Georgia', Times, Times New Roman, serif;
+	text-align: center;
+	line-height: 90px;
+	color: #fff;
+	font-weight: 700;
+	font-size: 30px;
+	text-decoration: none;
+}
+
+
+/*About Me*/
+#main-container{
+	padding-top: 150px;
+}
+
+.main-section{
+	background: #fff;
+	padding: 30px;
+	margin: 0 0 40px 0;
+	width: 100%;
+	max-width: 650px;
+	float: left;
+	border: 1px solid #ddd;
+}
+
+.auth-image {
+	width: 274px;
+	height: auto;
+	margin-top: 10px;
+	float: left;
+	margin-right: 25px;
+}	
+
+.container{
+	width: 100%;
+	max-width: 960px;
+	margin: 0 auto;
+	clear: both;
+}
+
+.sidebar{
+	background: #fff;
+	padding: 30px;
+	width: 100%;
+	max-width: 270px;
+	float: right;
+	border: 1px solid #ddd;
+	margin-bottom: 20px;
+}
+
+h2, h3, .sidebar{
+	border-bottom: 2px solid #eee;
+	padding-bottom: 20px;
+	margin-bottom: 15px;
+	line-height: 22px;
+}
+
+.social {
+	width: 62px;
+	height: 62px;
+	margin-top: 8px;
+	margin-right: 5px;
+}
+
+.social:last-child {
+	margin-right: 0;
+}
+
+
+/*Portfolio*/
+.work {
+	width: 274px;
+	overflow: auto;
+	position: relative;
+	float: left;
+	margin: 25px 0 25px;
+}
+
+.work:nth-child(even) {
+	margin-right: 40px;
+}
+
+.work h3 {
+	border-bottom: 0;
+	background: #4aaaa5;
+	color: #fff;
+	position: absolute;
+	bottom: 5px;
+	padding: 5px;
+	width: 80%;
+	line-height: 30px;
+	margin-bottom: 10px;
+	font-weight: 300;
+	text-align: center;
+}
+
+
+/*Contact Page*/
+#contact-form, ul {
+	margin-bottom: 20px;
+}
+
+#contact-form, li {
+	margin-bottom: 10px;
+}
+
+label, input[type=text], input[type=email], textarea {
+	display: block;
+	width: 100%;
+}
+
+input[type=text], input[type=email], textarea {
+	height: 35px;
+	border: 1px solid #ddd;
+	padding: 0 10px;
+	font-size: 14;
+}
+
+textarea {
+	height: 200px;
+}
+
+input[type=submit] {
+	background: #4aaaa5;
+	border: 0 none;
+	color: #fff;
+	font-size: 18px;
+	padding: 10px 30px;
+	cursor: pointer;
+}
+
+/*Footer*/
+footer {
+	background: #666;
+	color: #fff;
+	padding: 30px 0;
+	clear: both;
+	border-top: 8px solid #4aaaa5;
+	color: both;
+	font-size: 12px;
+	text-align: center;
+}
+
+#red {
+	border: 1px solid red;
+}
+
