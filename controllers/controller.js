@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var queries = require('../models/burger.js');
+var queries = require('');
 
 router.get('/', function (req, res) {
     queries.show(function(data){

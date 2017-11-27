@@ -1,21 +1,75 @@
 <h1>Teachers Con!</h1>
-{{#}}
-  <pre>
-    {{#if this.announcements}}
-      <span>
-        Today's Announcements: {{announcement}}
-        {{else}}
-        {{empty}} 
-      </span>
+<h3>List of Teachers:</h3>
+<ul>
+  {{#each Teachers}}
+    <li>
+      <p>
+        {{this.id}}.{{this.TeacherName}}
+        <button data-teacherid = "{{this.ID}}" id="delTeacher">Destroy</button>
+      </p>
+    </li>
+  {{/each}}  
+</ul>
 
-      <form action="/update/{{ id }}" method="post">
-        <button type="submit">Log In</button>
-        {{/if}}  
-      </form> 
-  </pre>
-{{/each}}
+<h2>Add Teacher's Name</h2>
+<form id="addTeacher" class="button-size">
+  <textarea type="text" name="teacher" placeholder="John Doe"></textarea>
+  <button type="submit">Add</button>
+</form>
 
-<form action="/create" method="post">
-  <textarea name="item" rows="2" cols="30"></textarea>
-  <button type="submit">Enter Your Name</button>
-<form>
+<h2>Update Teacher's Name</h2>
+<form id="updateTeacher" class="button-size">
+  <input type="text" name="id" placeholder="Insert ID Number">
+  <textarea type="text" placeholder="Insert Name"></textarea>  
+  <button type="submit">Update Name</button>
+</form>
+
+
+<script type="text/javascript">
+  // Delete Teacher
+  $("#delTeacher").on("click", function(event) {
+    var id = $(this).data("teacherid");
+
+    $.ajax("/Teachers/" + id, {
+      type: "DELETE"
+    }).then(function() {
+      console.log("Deleted ID: " + id);
+      location.reload();
+    });
+  });
+
+  // Add a Teacher
+  $("#addTeacher").on("submit", function(event) {
+    event.preventDefault();
+
+    var addTeacher = {
+      TeacherName: $("#addTeacher [name = TeacherName]").val().trim()
+    };
+
+    $.ajax("/Teachers", {
+      type: "POST",
+      data: addTeacher
+    }).then(function() {
+      console.log("Added Teacher: " + addTeacher);
+      location.reload();
+    });
+  });
+
+  // Update Teacher
+  $("#updateTeacher").on("submit", function(event) {
+    event.preventDefault();
+
+    var id = $("[name=id]").val().trim();
+    var updateTeacher = {
+      Teachers: $("#updateTeacher [name=Teachers]").val().trim()
+    };
+
+    $.ajax("/Teachers" + id, {
+      type: "PUT",
+      data: updateTeacher
+    }).then(function() {
+      console.log("Updated ID: " + id + "_" + updateTeacher);
+      location.reload();
+    });
+  });
+</script>
