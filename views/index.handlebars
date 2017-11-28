@@ -1,19 +1,20 @@
 <h1>Teachers Con!</h1>
 <h3>List of Teachers:</h3>
-<ul>
+
+<ol>
   {{#each Teachers}}
     <li>
       <p>
-        {{this.id}}.{{this.TeacherName}}
-        <button data-teacherid = "{{this.ID}}" id="delTeacher">Destroy</button>
+        {{this.TeacherName}}
+        <button data-teacherid = "{{this.ID}}" class = "delTeacher">Delete</button>
       </p>
     </li>
   {{/each}}  
-</ul>
+</ol>
 
 <h2>Add Teacher's Name</h2>
 <form id="addTeacher" class="button-size">
-  <textarea type="text" name="teacher" placeholder="John Doe"></textarea>
+  <textarea type="text" name="TeacherName" placeholder="Full name"></textarea>
   <button type="submit">Add</button>
 </form>
 
@@ -26,8 +27,8 @@
 
 
 <script type="text/javascript">
-  // Delete Teacher
-  $("#delTeacher").on("click", function(event) {
+// Delete Teacher
+  $(".delTeacher").on("click", function(event) {
     var id = $(this).data("teacherid");
 
     $.ajax("/Teachers/" + id, {
@@ -38,7 +39,7 @@
     });
   });
 
-  // Add a Teacher
+// Add a Teacher
   $("#addTeacher").on("submit", function(event) {
     event.preventDefault();
 
@@ -55,7 +56,7 @@
     });
   });
 
-  // Update Teacher
+// Update Teacher
   $("#updateTeacher").on("submit", function(event) {
     event.preventDefault();
 
@@ -68,7 +69,7 @@
       type: "PUT",
       data: updateTeacher
     }).then(function() {
-      console.log("Updated ID: " + id + "_" + updateTeacher);
+      console.log("Updated ID: " + id + ". " + updateTeacher);
       location.reload();
     });
   });

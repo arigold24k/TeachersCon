@@ -8,7 +8,7 @@ var PORT = process.env.PORT || 8080;
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({  extended: false }));
 app.use(bodyParser.json());
-app.use(methodOverride('_method'));
+// app.use(methodOverride('_method'));
 
 
 var exphbs = require('express-handlebars');
@@ -32,24 +32,13 @@ connection.connect(function(err) {
 	console.log("Connected as id: " + connection.threadId);
 });
 
-// Using handlebars to render index.html
+// Using Handlebars to render index.html
 app.get("/", function(req, res) {
 	connection.query("SELECT * FROM Teachers;", function(err, data) {
 		if (err) {
 			return res.status(500).end();
 		}
 		res.render("index", { Teachers: data });
-	});
-});
-
-// Create or Post [CRUD]
-app.post("/Teachers", function(req, res) {
-	connection.query("INSERT INTO Teachers (TeacherName) VALUES (?)", [req.body.TeacherName], function(err, result) {
-		if (err) {
-			return res.status(500).end();
-		}
-		res.json({ id: result.insertId });
-		console.log({ id: result.insertId });
 	});
 });
 
@@ -63,10 +52,21 @@ app.get("/Teachers", function(req, res) {
 	});
 });
 
+// Create New Teacher [CRUD]
+app.post("/Teachers", function(req, res) {
+	connection.query("INSERT INTO Teachers (TeacherName) VALUES (?)", [req.body.TeacherName], function(err, result) {
+		if (err) {
+			return res.status(500).end();
+		}
+		res.json({ ID: result.insertID });
+		console.log({ ID: result.insertID });
+	});
+});
+
 // Update [CRUD]
 app.put("teachers/:ID", function(req, res) {
 	connection.query("UPDATE Teachers SET TeacherName = ? WHERE ID = ?", 
-	[req.body.TeacherName, req.params.id], function(err, result) {
+	[req.body.TeacherName, req.params.ID], function(err, result) {
 		if (err) {
 			return res.status(500).end();
 		} else if (result.changedRows == 0) {
@@ -80,7 +80,7 @@ app.put("teachers/:ID", function(req, res) {
 // Delete [CRUD]
 app.delete("/Teachers/:ID", function(req, res) {
 	connection.query("DELETE FROM Teachers WHERE ID = ?", 
-	[req.params.id], function(err, result) {
+	[req.params.ID], function(err, result) {
 		if (err) {
 			return res.status(500).end();
 		} else if (result.affectedRows == 0) {
@@ -91,7 +91,7 @@ app.delete("/Teachers/:ID", function(req, res) {
 	});
 });
 
-// Using controller.js instead of the code above //
+// Using the controller.js file instead of the code above //
 // var routes = require('./controllers/controller.js');
 // app.use('/', routes);
 // app.use('/create', routes);
