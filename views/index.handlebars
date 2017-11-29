@@ -9,17 +9,21 @@
 <br>
 
 <form action="create-form">
-  <div class="container">
-    <label><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+	<div class="container">
+	    <label for="email"><b>Email</b></label>
+	    <input type="text" placeholder="Enter Email" name="email" id="email" required>
 	
-    <label><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-    <br>
-    <br>
+	    <label for="psw"><b>Password </b></label>
+	    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+	    <br>
+	</div>
+<br>
+<div class="container2">
     <button type="submit">Login</button>
-     <button type="submit">Sign Up</button>
+</div>   
    {{!--  <input type="checkbox" checked="checked"> Remember me --}}
-  </div>
-
 </form>
+
+<div class="container2">
+    <a href="/register"><button type="submit">Sign Up</button></a>
+</div> 

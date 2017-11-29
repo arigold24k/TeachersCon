@@ -20,6 +20,10 @@ app.get('/', function (req, res) {
   res.render('index')
 })
 
+app.get('/layouts', function (req, res) {
+  res.render('pages')
+})
+
 app.listen(port, function() {
 	console.log(`Server is listening on port ${port}`);
 });
