@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             defaultValue: "A"
         },
-        teachername: {
+        username: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {

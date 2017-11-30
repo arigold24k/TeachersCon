@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     var Grades = sequelize.define("Grades", {
-        studname: {
+        username: {
             type: DataTypes.STRING,
             defaultValue: "Name"
         },

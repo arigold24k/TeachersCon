@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     var Parents = sequelize.define("Parents", {
-        name: {
+        username: {
             type: DataTypes.STRING,
             defaultValue: "A"
         },
