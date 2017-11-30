@@ -51,16 +51,16 @@ module.exports = {
       if (!user) {
         console.log('No user found');
       }
-      const user = {
+      const member = {
       id: req.body.id,
       username: req.body.username,
       email: req.body.email
       }
 
-      const token = jwt.sign(user, 'secret', {expiresIn: '10h'}, function (err, token) {
+      const token = jwt.sign(member, 'secret', {expiresIn: '10h'}, function (err, token) {
         if (err) res.json(err);
         res.json({token});
-      });
+      }, 'secretcookie');
 
       res.cookie('token', token, {
         secure: process.env.NODE_ENV === 'production',

@@ -1,6 +1,7 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const config = require('./config/config');
 
 // Requiring our models for syncing
@@ -17,7 +18,9 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 app.use(express.static('./public'));
 
-var exphbs = require("express-handlebars");
+app.use(cookieParser('secretcookie'));
+
+const exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
