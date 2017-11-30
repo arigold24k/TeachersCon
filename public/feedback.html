@@ -3,173 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <title>Feedback</title>
+
+    <!-- CSS Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css" rel="stylesheet" integrity="sha384-S7YMK1xjUjSpEnF4P8hPUcgjXYLZKK3fQW1j5ObLSl787II9p8RO9XUGehRmKsxd" crossorigin="anonymous">
+
     <link rel="stylesheet" href="css/styles.css">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+    <!-- JS Bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    <!-- JS JQuery -->
+    <script src="httgs.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+    <!-- JS Moment -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+    <script src="assets/js/feedbackAPI.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
 </head>
 
 <body>
+    <br>
     <div class="col-xs-12 text-center">
-        <div class="row">
-            <p>
-                <a href="index.html">Home</a> || 
-                <a href="reportCard.html">Report Card</a> || 
-                <a href="chat.html">Chat</a> || 
-                <a href="calender.html">Calender</a> || 
-                <a href="feedback.html">Feedback</a>
-            </p>
-        </div>
+        <p>
+            <a href="index.html">Home</a> || 
+            <a href="reportCard.html">Report Card</a> || 
+            <a href="chat.html">Chat</a> || 
+            <a href="calender.html">Calender</a> || 
+            <a href="feedback.html">Feedback</a>
+        </p>
+        <h1>Feedback</h1>
+        <hr>
+        <p>Tell us what you think</p>
+    </div>
+    
+    <div class="col-lg-12 col-md-12 col-xs-12">
+        <span class="col-lg-3 col-md-3 col-xs-1"></span>
+        <span class="col-lg-6 col-md-6 col-xs-10" method="post">
+            <div>
+                <label for="userName">Name:</label>
+                <input type="text" class="form-control" id="userName" placeholder="Full Name"> <br>
+
+                <label for="email">Email Address:</label>
+                <input type="text" class="form-control" id="email" placeholder="Enter Email"> <br>
+
+                <label for="subject">Subject:</label>
+                <input type="text" class="form-control" id="subject" placeholder="Subject title"> <br>
+
+                <label for="comment">Comment:</label>
+                <textarea type="text" class="form-control" id="comment" placeholder="Enter in your comment"></textarea> 
+            </div>
+            <hr>
+            
+            <button type="submit" class="btn btn-primary" id="submitComment">Submit</button> <br><br>
+
+        </span>
     </div>
 
     <footer class="text-center">
-        <p>&copy; 2017</p>
+        <p>&copy; 2017, Andy K</p>
     </footer>
 
-</body>
-</html>
-
-
-=========================================================================
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>GroupProject</title>
-    <meta charset="utf-8">
-
- 
-    <!--bootstrap cdn-->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!--javascript cdn-->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-    <!--jquery cdn-->
-    <script src="httgs.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey:             "AIzaSyDVtLkMFEnRz-n-1adqa4UN34CoUy7oTYE",
+        authDomain:         "gtcbc7and2.firebaseapp.com",
+        databaseURL:        "https://gtcbc7and2.firebaseio.com",
+        projectId:          "gtcbc7and2",
+        storageBucket:      "gtcbc7and2.appspot.com",
+        messagingSenderId:  "759565880970"
+    };
+    firebase.initializeApp(config);
+    var database = firebase.database();
     
-    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-
-    <!--firebase-->
-    <script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
-
+    // User Input
+    var userName    = "";
+    var userSubject = "";
+    var userCom     = "";
+    var userNewCom  = "";
     
-    <!--new moment.js-->
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-
+    $('#submit').on("click", function(event) {
+        event.preventDefault();
+        
+        userName    = $("#name").val().trim();
+        userSubject = $("#Subject").val().trim();
+        userCom     = $("#com").val().trim();
+        
+        database.ref().push({
+            topic: userSubject,
+            name: userName,
+            comment: userCom,
+            newComments: userNewCom
+        });
     
-    <!-- google font -->
-    <link href='https://fonts.googleapis.com/css?family=Montez' rel='stylesheet'>
+        $("#name").val('');
+        $("#Subject").val('');
+        $("#com").val('');
+    }); 
     
-    <!-- JavaScript -->
-    <script src="assets/javascript/daviidAPI.js"></script>
-    
-    <!--CSS-->
-    <link rel="stylesheet" href="assets/css/comments.css">
-
-</head>
-
-<!--Comment out yellow background
-<body style="background-color: yellow;">
--->
-<body>
-
-<div id="sub_body" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-
-<div>
-    <div id="message_area"></div>
-    <hr>
-</div>   
-<!--does not redirect to homepage with button
-<a href="index.html"><button>HOME PAGE</button></a>
--->
-<!--homepage tab-->
-<a href="index.html"><img src="assets/images/home-icon.png" class="homepageTab"></a>
-<h1 class="h1_class">TELL US WHAT YOU THINK</h1>
-<form action="/my-handling-form-page" method="post">
-    <div>
-        <label for="name"><strong>Name:</strong></label><br>
-        <input type="text" id="name" name="user_name" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="color:black;" placeholder="Your Name">
-    </div><br>
-    <div>
-        <label for="Subject"><strong>Subject:</strong></label><br>
-        <input type="text" id="Subject" name="Subject" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="color:black;" placeholder="Subject Title">
-    </div><br>
-    <div>
-        <label for="msg"><strong>Comment:</strong></label><br>
-        <textarea id="com" name="user_comment" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="color:black;" placeholder="Your Comment"></textarea>
-    </div><br>
-    <div class="button">
-    <button type="submit" id="submit" style="color:black;">Submit</button>
-    </div><br>
-</form> 
-    <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDVtLkMFEnRz-n-1adqa4UN34CoUy7oTYE",
-    authDomain: "gtcbc7and2.firebaseapp.com",
-    databaseURL: "https://gtcbc7and2.firebaseio.com",
-    projectId: "gtcbc7and2",
-    storageBucket: "gtcbc7and2.appspot.com",
-    messagingSenderId: "759565880970"
-  };
-  firebase.initializeApp(config);
-  var database = firebase.database();
-    
-    var userName="";
-    var userSubject= "";
-    var userCom="";
-    var userNewCom="";
-    
-$('#submit').on("click", function(event){
-    event.preventDefault();
-    userName = $("#name").val().trim();
-    userSubject = $("#Subject").val().trim();
-    userCom = $("#com").val().trim();
-database.ref().push({
-    topic: userSubject,
-    name: userName,
-    comment: userCom,
-    newComments: userNewCom
-    });
-    
-    $("#name").val('');
-    $("#Subject").val('');
-    $("#com").val('');
-   }); 
-    database.ref().on("child_added", function(snapshot){
-        var ss = snapshot.val();
-        var daTopic = ss.topic;
-        var daComment = ss.comment;
-        var daName = ss.name;
-        var allSpan = $("<div class='comBox'><span><strong>Name: </strong><p>"+daName+"</p></span>" + "<span><strong>Topic: </strong><p>"+daTopic+"</p></span>" + "<span><strong>Comment: </strong><p>"+daComment+"</p></span></div>");
-        $("#message_area").append(allSpan);
-    });
 </script>
 
-
-<!--Music on start-->
-<!--music doesn't auto resume when navagating-->
-<audio controls autoplay>
-  <source src="assets/music/jsb-air.mp3" type="audio/mpeg">
-</audio>
-
-</div>    
-<!--footer-->
-<!--  h3 text-muted text-muted-footer -->
-<footer class="footer">
-  <div class="two-toned-footer-color"></div>
-  <h3 class="text-center">
-    &copy; Copyright 2017 C(K<sup>2</sup>)
-  </h3>
-</footer>
-
-
-
-
-
-
 </body>
 </html>
+
+
