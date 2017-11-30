@@ -1,17 +1,17 @@
 module.exports = function(sequelize, DataTypes) {
-    var Classroom = sequelize.define("Classroom", {
-        classroom: {
+    var Parents = sequelize.define("Parents", {
+        name: {
             type: DataTypes.STRING,
             defaultValue: "A"
         },
-        teachername: {
+        email: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1, 40]
             }
         },
-        teachertitle: {
+        address: {
             type: DataTypes.TEXT,
             allowNull: false,
             validate: {
@@ -22,6 +22,17 @@ module.exports = function(sequelize, DataTypes) {
         updatedAt: DataTypes.DATE
     });
 
+    Parents.associate = function(models) {
+        // Associating Author with Posts
+        // When an Author is deleted, also delete any associated Posts
+        Parents.hasMany(models.Student, {
+            onDelete: "cascade"
+        });
 
-    return Classroom;
+        Parents.hasMany(models.Grades, {
+            onDelete: "cascade"
+        });
+    };
+
+    return Parents;
 };

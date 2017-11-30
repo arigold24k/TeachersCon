@@ -82,6 +82,32 @@ var orm = {
 
             cb(result);
         });
+    },
+    // data to query information from tables
+    retrieve: function(table, secondtable, field,field2, condition, cb) {
+        var queryString = "SELECT * FROM " + table;
+
+        queryString += " LEFT JOIN ";
+        queryString += secondtable;
+        queryString += " ON ";
+        queryString += table;
+        queryString += ".";
+        queryString += field1;
+        queryString += "=";
+        queryString += secondtable;
+        queryString += ".";
+        queryString += field2;
+        queryString += " WHERE ";
+        queryString += condition;
+
+        console.log(queryString);
+        connection.query(queryString, function(err, result) {
+            if (err) {
+                throw err;
+            }
+
+            cb(result);
+        });
     }
     // delete: function(table, condition, cb) {
     //     var queryString = "DELETE FROM " + table;
