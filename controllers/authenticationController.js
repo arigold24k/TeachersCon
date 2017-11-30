@@ -1,4 +1,6 @@
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 const db = require('../models');
 
 module.exports = {
@@ -39,17 +41,31 @@ module.exports = {
   // TODO validate password matches username in db
   // POST route for user login
   login: function (req, res, next) {
-    const {username, password} = req.body
+    const {id, username, email, password} = req.body;
     db.User.findOne({
       where: {
-        username: req.body.username
+        email: req.body.email
       }
     })
     .then(function (user) {
       if (!user) {
         console.log('No user found');
       }
-      res.status(200).redirect('/member');
+      const user = {
+      id: req.body.id,
+      username: req.body.username,
+      email: req.body.email
+      }
+
+      const token = jwt.sign(user, 'secret', {expiresIn: '10h'}, function (err, token) {
+        if (err) res.json(err);
+        res.json({token});
+      });
+
+      res.cookie('token', token, {
+        secure: process.env.NODE_ENV === 'production',
+        signed: true
+      });
     })
     .catch(function (err) {
       res.status(400).send({'status': 'Username or password is not valid.'});
