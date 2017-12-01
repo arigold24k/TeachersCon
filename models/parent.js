@@ -23,17 +23,17 @@ module.exports = function(sequelize, DataTypes) {
         updatedAt: DataTypes.DATE
     });
 
-    // Parents.associate = function(models) {
-    //     // Associating Author with Posts
-    //     // When an Author is deleted, also delete any associated Posts
-    //     Parents.hasMany(models.Student, {
-    //         onDelete: "cascade"
-    //     });
-    //
-    //     Parents.hasMany(models.Grades, {
-    //         onDelete: "cascade"
-    //     });
-    // };
+    Parents.associate = function(models) {
+        // Associating Author with Posts
+        // When an Author is deleted, also delete any associated Posts
+        Parents.hasMany(models.Student, {
+            onDelete: "cascade"
+        });
+
+        Parents.hasMany(models.Grades, {
+            onDelete: "cascade"
+        });
+    };
 
     return Parents;
 };

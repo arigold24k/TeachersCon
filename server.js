@@ -16,19 +16,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-app.use(express.static('./public'));
-
+// Cookie parser used to sign the cookie
 app.use(cookieParser('secretcookie'));
-
-app.use('/members', jwtExp({
-    secret: token,
-    getToken: function fromCookie(req) {
-        if (req.signedCookies) {
-            return req.signedCookies.token;
-        }
-        return null;
-    }
-}));
 
 const exphbs = require("express-handlebars");
 
@@ -36,12 +25,48 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 require('./routes/authRoutes')(app);
-require('./routes/htmlRoutes')(app);
+const userRoutes = require('./routes/userRoutes');
+
+// BUG Unable to install express-jwt
+// Verifies the cookie
+// app.use('/members', jwtExp({
+//     secret: token,
+//     getToken: function fromCookie(req) {
+//         if (req.signedCookies) {
+//           // Returns cookie to secure middleware
+//             return req.signedCookies.token;
+//         }
+//         // Returns null which creates an error
+//         return null;
+//     }
+// }));
+
+app.get('/members', validateToken, function (req, res) {
+  jwt.verify(token, 'token', function (err, data) {
+    if (err) res.status(403);
+    res.json();
+  })
+})
+
+function validateToken(req, res, next) {
+  const bearerHeader = req.headers["authorization"];
+  if (typeof bearerHeader !== 'undefined') {
+    const bearer = bearerHeader.split(" ");
+    const bearerToken = bearer[1];
+    req.token = bearerToken;
+    next();
+  } else {
+    res.sendStatus(403);
+  }
+}
+
+app.use('members', userRoues);
+
+app.use(express.static('./public'));
 
 app.get('/', function (req, res) {
   res.render('index')
 })
-
 
 db.sequelize.sync({ force: false })
   .then(function() {

@@ -20,22 +20,22 @@ module.exports = function(sequelize, DataTypes) {
         updatedAt: DataTypes.DATE
     });
 
-    // Student.associate = function(models) {
-    //     // We're saying that a Post should belong to an Author
-    //     // A Post can't be created without an Author due to the foreign key constraint
-    //
-    //     Student.belongsTo(models.Parents, {
-    //         foreignKey: {
-    //             allowNull: false
-    //         }
-    //     });
-    //
-    //     Student.belongsTo(models.Classroom, {
-    //         foreignKey: {
-    //             allowNull: false
-    //         }
-    //     });
-    // };
+    Student.associate = function(models) {
+        // We're saying that a Post should belong to an Author
+        // A Post can't be created without an Author due to the foreign key constraint
+
+        Student.belongsTo(models.Parents, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+
+        Student.belongsTo(models.Classroom, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
 
     return Student;
 };
