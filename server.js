@@ -1,29 +1,36 @@
-var express = require("express");
-var bodyParser = require("body-parser");
+const express = require('express');
+const bodyParser = require('body-parser');
+const config = require('./config/config');
 
-var port = process.env.PORT || 3000;
+// Requiring our models for syncing
+const db = require("./models");
 
-var app = express();
+var PORT = process.env.PORT || 3000;
 
-app.use(express.static("public"));
+// Sets up the Express app to handle data parsing
+const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static('./public'));
 
 var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-//var routes = require("./controllers/burgers_controller.js");
+require('./routes/authRoutes')(app);
+require('./routes/htmlRoutes')(app);
 
 app.get('/', function (req, res) {
   res.render('index')
 })
 
-app.get('/layouts', function (req, res) {
-  res.render('pages')
-})
-
-app.listen(port, function() {
-	console.log(`Server is listening on port ${port}`);
+db.sequelize.sync({ force: false })
+  .then(function() {
+    app.listen(PORT, function() {
+      console.log("App listening on PORT " + PORT);
+    });
 });

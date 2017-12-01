@@ -2,14 +2,52 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="/assets/css/teacher_style.css" type="text/css"/>
+	
 	<link href="https://fonts.googleapis.com/css?family=Gorditas" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu:300i" rel="stylesheet">
+
 
 	<title>TeacherCon</title>
 	<script src="https://code.jquery.com/jquery.js"></script>
 
+	 <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  {{!-- <link rel="stylesheet" href="/assets/css/teacher_style.css" type="text/css"/>
+ --}}
+ <style>
+ 	html {
+ 		font-family: Gorditas;
+ 	}
+ </style>
 </head>
-<body>
-	{{{ body }}}
+<body class="blue-grey">
+	<div class="container">
+		{{{ body }}}
+	</div>
+	<footer class="page-footer teal lighten-5">
+		<div class="container">
+			<div class="row">
+			  	<div class="col m6 s12">
+					<p class="blue-grey-text" style="font-weight: 500; font-size: 30px; padding: 0; margin: 0;">About Teacher-Con</p>
+						<p class="blue-grey-text">Teacher-Con bridges the communcation gap between busy teachers and parents, helping to provide information to ensure the needs of students are met.</p>
+				</div>	
+
+				<div class="col m4 offset-l2 s12">
+					<img src="/assets/img/facebook.png" alt="Teacher Apple" id="apple" width="30" height="30">
+					<img src="/assets/img/github.png" alt="Teacher Apple" id="apple" width="30" height="30">
+					<img src="/assets/img/twitter.png" alt="Teacher Apple" id="apple" width="30" height="30">
+					<img src="/assets/img/slack.png" alt="Teacher Apple" id="apple" width="30" height="30">
+				</div>
+			</div>
+		</div>	
+		<div class="footer-copyright">
+			<div class="container center">
+				<a class="blue-grey-text">© Copyright Teacher-Con 2017</a>
+			</div>
+		</div>
+  	</footer>
 </body>
 </html>
