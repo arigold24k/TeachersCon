@@ -27,7 +27,7 @@ module.exports = {
             password: hash
           })
           .then(function () {
-            res.status(200).redirect('/member');
+            res.status(200).redirect('/members');
           })
           .catch(function (err) {
             res.status(400).send({
@@ -67,8 +67,6 @@ module.exports = {
         res.redirect('/members/profile')
         res.json({token});
       }, 'secretcookie');
-
-
 
     })
     .catch(function (err) {

@@ -9,18 +9,116 @@ h2 {
 	margin-top: 100px;
 	margin-bottom: 20px;
 	text-align: center;
+}
+
+label {
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.about {
+    word-wrap: normal;
+    width: 20%;
+}
+
+.create-form {
+    height: auto;
+}
+
+.copyright {
+    position: relative;
+    width: 60%;
+    padding-top: 120px;
+    text-align: center;
+    /*padding-left: 350px;*/
+    
+}
+
+.icons {
+    padding-top: 130px;   
+    width: 30%;
+    text-align: right;
+    padding-right: 1    5px;
+}
+
+.welcome {
+    font-family: 'Gorditas', cursive;
+    color: #cccccc;
+    font-size: 25px;    
+    text-align: center;
 
 }
 
-.container {
-	text-align: center;
+
+.teacherchat {
+    background-color: #cccccc; 
+    width: 1000px;
+    height: 500px;
+    align-content: center;
+}
+h3 {
 	font-family: 'Gorditas', cursive;
-	font-size: 15px;
+	font-size: 20px;	
+	color: #cccccc;
+}	
+
+h4 {
+    font-family: 'Gorditas', cursive;
+    color: #007897;
+    font-size: 20px;
+    padding: 10px;
+    font-style: bold;
+ }
+
+ h5 {
+    font-family: 'Ubuntu', sans-serif;
+    color: #007897;
+    font-size: 15px;
+    padding: 10px;  
+    word-wrap: normal;
+ }
+    
+.container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.container1 {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	padding-top: 20px;
+
+}
+
+.container2 {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 label {
 	color: #cccccc;	
 }
+
+.regBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.regisinput {
+    width: 250px;
+}
+
 
 .animate {
     float: center;
@@ -49,7 +147,6 @@ label {
     to {-moz-transform: translate(0, -0px);}    
 }
 
-
 .scaling{
     float: center;
     -webkit-animation-name: scalex;
@@ -73,4 +170,3 @@ label {
         65% {-moz-transform: scale(1.0);}
         to {-moz-transform: scale(0.9);}    
     }
-

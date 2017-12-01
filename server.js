@@ -20,6 +20,16 @@ app.use(express.static('./public'));
 
 app.use(cookieParser('secretcookie'));
 
+app.use('/members', jwtExp({
+    secret: token,
+    getToken: function fromCookie(req) {
+        if (req.signedCookies) {
+            return req.signedCookies.token;
+        }
+        return null;
+    }
+}));
+
 const exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
