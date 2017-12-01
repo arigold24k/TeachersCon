@@ -59,13 +59,17 @@ module.exports = {
 
       const token = jwt.sign(member, 'secret', {expiresIn: '10h'}, function (err, token) {
         if (err) res.json(err);
+        res.cookie('token', token, {
+          secure: process.env.NODE_ENV === 'production',
+          signed: true
+        });
+        // redirect user to protected HTML route
+        res.redirect('/members/profile')
         res.json({token});
       }, 'secretcookie');
 
-      res.cookie('token', token, {
-        secure: process.env.NODE_ENV === 'production',
-        signed: true
-      });
+
+
     })
     .catch(function (err) {
       res.status(400).send({'status': 'Username or password is not valid.'});
