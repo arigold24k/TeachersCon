@@ -73,7 +73,7 @@ module.exports = {
           secure: process.env.NODE_ENV === 'production',
           signed: true
         });
-        
+
         res.json({
            message: 'Authenticated! Use this token in the "Authorization" header',
            token: token
