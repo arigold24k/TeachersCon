@@ -9,6 +9,8 @@
 
 	<title>TeacherCon</title>
 	<script src="https://code.jquery.com/jquery.js"></script>
+	<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
 
 	 <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
@@ -20,8 +22,22 @@
  <style>
  	html {
  		font-family: Gorditas;
- 	}
+ 		}
+ 		.tabs .tab a{
+		    color:#00ACC1;
+		}
+		.tabs .tab a:hover,.tabs .tab a.active {
+			background-color:transparent;
+			color: black;
+		}
+		.tabs .tab.disabled a,.tabs .tab.disabled a:hover {
+			color: black;	
+		}
+		.tabs .indicator {
+			background-color: #00ACC1;
+ 		}
  </style>
+
 </head>
 <body class="blue-grey">
 	<div class="container">
@@ -36,10 +52,10 @@
 				</div>	
 
 				<div class="col m4 offset-l2 s12">
-					<img src="/assets/img/facebook.png" alt="Teacher Apple" id="apple" width="30" height="30">
-					<img src="/assets/img/github.png" alt="Teacher Apple" id="apple" width="30" height="30">
-					<img src="/assets/img/twitter.png" alt="Teacher Apple" id="apple" width="30" height="30">
-					<img src="/assets/img/slack.png" alt="Teacher Apple" id="apple" width="30" height="30">
+					<img src="/assets/img/facebook.png" alt="Facebook" width="30" height="30">
+					<img src="/assets/img/github.png" alt="Github" width="30" height="30">
+					<img src="/assets/img/twitter.png" alt="Twitter" width="30" height="30">
+					<img src="/assets/img/slack.png" alt="Slack" width="30" height="30">
 				</div>
 			</div>
 		</div>	
