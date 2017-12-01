@@ -40,7 +40,7 @@ app.use('/members', jwtExp({
     }
 }));
 
-app.use('members', userRoues);
+app.use('/members', userRoues);
 
 app.use(express.static('./public'));
 
