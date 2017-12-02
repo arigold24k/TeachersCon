@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col s12" style="padding-bottom: 40px;">
+        <ul class="tabs teal lighten-5 blue-grey-text">
+            <li class="tab col s3"><a href="/reports">Progress Reports</a></li>
+            <li class="tab col s3"><a href="/chat">Chat</a></li>
+            <li class="tab col s3"><a href="/calendar">Calendar</a></li>
+            <li class="tab col s3"><a href="/feedback">Feedback</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="row center">
+	<h2 class="grey-text text-lighten-3" style="font-size: 70px;">Teacher-Con</h2>
+</div>
+
+<div class="row center">
+  <h2 class="grey-text text-lighten-3" style="font-size: 20px; margin-top: 10px;">Chat with office administration, weekdays from 2 PM and 5 PM. </h2>
+</div>
+
+<div class="teacherchat">
+  <form action="col s12 m6 offest-m3" style="height: 50px; margin-top: 200px;"></form> 
+  
+  <ul id="messages"></ul>
+  
+  <form action="">
+    <div class="row center">
+      <input id="m" autocomplete="off" />
+      <button class="waves-effect waves-light btn black" style="margin-bottom: 40px; align: center;">Send</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  $(function() {
+    var socket = io();
+    $('form').submit(function() {
+      socket.emit('chat message', $('#m').val());
+      // $('#messages').append($('<li>').text($('#m').val()));
+      $('#m').val('');
+      return false;
+    });
+   socket.on('chat received', function(msg) {
+  $('#messages').append($('<li>').text(msg));
+  //$('#messages').append($('<li>').text(msg[1]));
+    });
+  });
+</script>
