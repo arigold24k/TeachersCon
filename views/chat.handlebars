@@ -22,9 +22,9 @@
       $('#m').val('');
       return false;
     });
-   socket.on('chat received', function(msg){
-  $('#messages').append($('<li>').text(msg));
-  //$('#messages').append($('<li>').text(msg[1]));
+   	socket.on('chat received', function(msg){
+  		$('#messages').append($('<li>').text(msg));
+  		//$('#messages').append($('<li>').text(msg[1]));
     });
   });
 </script>
@@ -34,12 +34,12 @@
 </div>
 
 <div class="teacherchat">
-	 <form action="col s12 m6 offest-m3" style="height: 50px; margin-top: 200px;">
-	</form>	
+	<form action="col s12 m6 offest-m3" style="height: 50px; margin-top: 200px;"></form>	
 	
-	    <ul id="messages"></ul>
+	<ul id="messages"></ul>
     <form action="">
     	<div class="row center">
-      <input id="m" autocomplete="off" /><button class="waves-effect waves-light btn black" style="margin-bottom: 40px; align: center;" >Send</button>
+      		<input id="m" autocomplete="off" /><button class="waves-effect waves-light btn black" style="margin-bottom: 40px; align: center;" >Send</button>
   		</div>
+  	</form>
 </div>
