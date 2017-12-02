@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 CREATE DATABASE users_db;
 USE users_db;
 
@@ -27,3 +28,6 @@ CREATE TABLE Parents (
     Teacher_ID INT NOT NULL,
 	PRIMARY KEY (ID)
 );
+=======
+schema.sql
+>>>>>>> 236eec02cb27ed4e7d4fd64e02d579c8a7296c34

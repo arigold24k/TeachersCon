@@ -1,0 +1,85 @@
+<div class="row">
+    <div class="col s12">
+        <ul class="tabs teal lighten-5 blue-grey-text">
+            <li class="tab col s3" style="b"><a href="/reports">Progress Reports</a></li>
+            <li class="tab col s3"><a class="active" href="/chat">Chat</a></li>
+            <li class="tab col s3"><a href="/calendar">Calendar</a></li>
+            <li class="tab col s3"><a href="/feedback">Feedback</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <h2 class="grey-text text-lighten-3">Feedback</h2>
+    <p class="grey-text text-lighten-3">Your opinion matters</p>
+    <hr>
+</div> 
+
+<div class="row-center" method="post">
+    <form action="col s12 m6 offest-m3">
+        <div class="row">
+            <div class="input-field col s12">
+                <label class="grey-text text-lighten-3" for="userName">Name:</label>
+                <input type="text" class="regisinput" id="userName" placeholder="Full Name" required>
+            </div>
+
+            <div>
+                <label class="grey-text text-lighten-3" for="email">Email Address:</label>
+                <input type="text" class="regisinput" id="email" placeholder="Enter Email" required>
+            </div>
+
+            <div>
+                <label class="grey-text text-lighten-3" for="subject">Subject:</label>
+                <input type="text" class="regisinput" id="subject" placeholder="Subject title" required>
+            </div>
+
+            <div>
+                <label class="grey-text text-lighten-3" for="comment">Comment:</label>
+                <textarea type="text" class="regisinput" id="comment" placeholder="Enter in your comment" required></textarea> 
+            </div>
+        </div>
+    </form>
+    <hr>
+    
+    <button class="waves-effect waves-light btn black" style="margin-bottom: 5%;" type="submit" id="submitComment">Submit</button> 
+</div>
+
+<script>
+// Initialize Firebase
+var config = {
+    apiKey:             "AIzaSyDVtLkMFEnRz-n-1adqa4UN34CoUy7oTYE",
+    authDomain:         "gtcbc7and2.firebaseapp.com",
+    databaseURL:        "https://gtcbc7and2.firebaseio.com",
+    projectId:          "gtcbc7and2",
+    storageBucket:      "gtcbc7and2.appspot.com",
+    messagingSenderId:  "759565880970"
+};
+firebase.initializeApp(config);
+var database = firebase.database();
+
+// User Input & Submition
+var userName    = "";
+var userSubject = "";
+var userCom     = "";
+var userNewCom  = "";
+
+$('#submit').on("click", function(event) {
+    event.preventDefault();
+    
+    userName    = $("#name").val().trim();
+    userSubject = $("#Subject").val().trim();
+    userCom     = $("#com").val().trim();
+    
+    database.ref().push({
+        topic: userSubject,
+        name: userName,
+        comment: userCom,
+        newComments: userNewCom
+    });
+
+    $("#name").val('');
+    $("#Subject").val('');
+    $("#com").val('');
+}); 
+    
+</script>

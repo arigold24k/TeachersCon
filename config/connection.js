@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
@@ -9,3 +10,6 @@ var connection = mysql.createConnection({
 });
 
 module.exports = connection;
+=======
+connection.js
+>>>>>>> 236eec02cb27ed4e7d4fd64e02d579c8a7296c34
