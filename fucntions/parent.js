@@ -1,8 +1,8 @@
 var orm = require("../config/orm.js");
 
 var parent = {
-    retrieve: function(condition, cb) {
-        orm.retrieve("Parents", "Grades", "Parents.id", "Grades.ParentId", condition, function(res){
+    retrieve: function(cb) {
+        orm.retrieve("Parents", "Grades", "id", "ParentId","Parents.id = 1", function(res){
             cb(res);
         })
     }

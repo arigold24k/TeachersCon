@@ -3,6 +3,7 @@ var express = require("express");
 var router = express.Router();
 
 var teacher = require("../fucntions/teacher.js");
+var parent = require("../fucntions/parent");
 
 // Import the model (cat.js) to use its database functions.
 // var teacherorm = require("../models/teacherorm.js");
@@ -10,8 +11,21 @@ var teacher = require("../fucntions/teacher.js");
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
 //call function from teacherorm
-        console.log(hbsObject);
-        res.render("index", hbsObject);
+        parent.retrieve(function (data) {
+            var average = ((Number(data[0].math) + Number(data[0].reading) + Number(data[0].socialstudies) + Number(data[0].science)) / 4);
+            var hbsObject = {
+                name: data[0].username,
+                math: data[0].math,
+                reading: data[0].reading,
+                socialstudies: data[0].socialstudies,
+                science: data[0].science,
+                average: average
+            };
+            console.log(data);
+            console.log(hbsObject);
+            res.render("reportcard", hbsObject);
+        });
+
     });
 
 router.post("/api/burgers", function(req, res) {
