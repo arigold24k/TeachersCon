@@ -9,6 +9,9 @@ var PORT = process.env.PORT || 3000;
 
 // Sets up the Express app to handle data parsing
 const app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
@@ -28,9 +31,21 @@ app.get('/', function (req, res) {
   res.render('index')
 })
 
-db.sequelize.sync({ force: false })
-  .then(function() {
-    app.listen(PORT, function() {
-      console.log("App listening on PORT " + PORT);
-    });
+// db.sequelize.sync({ force: false })
+//   .then(function() {
+// });
+http.listen(3000, function(){
+  console.log('http listening on *:3000');
+});
+
+// app.listen(PORT, function() {
+//   console.log("App listening on PORT " + PORT);      
+// });
+  
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    console.log('message: ' + msg); 
+   // when the client emits 'new message', this listens and executes
+    io.emit('chat received', msg);
+  });
 });

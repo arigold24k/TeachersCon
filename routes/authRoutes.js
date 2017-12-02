@@ -1,5 +1,6 @@
 const authentication =  require('../controllers/authenticationController');
 
+
 module.exports = function(app) {
 
 app.get('/', function (req, res) {
@@ -15,7 +16,16 @@ app.get('/members', function (req, res) {
 })
 
 app.get('/chat', function (req, res) {
-  res.render('chat')
+   res.render('chat');
+});
+
+// http.listen(3000, function(){
+//   console.log('listening on *:3000');
+// });
+
+
+app.get('/feedback', function (req, res) {
+  res.render('feedback')
 })
   // TODO validate that username has no spaces or special character besides
   // a-z, A-Z, 0-9, - or _
