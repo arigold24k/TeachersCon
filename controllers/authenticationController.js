@@ -4,6 +4,10 @@ const cookieParser = require('cookie-parser');
 const db = require('../models');
 
 module.exports = {
+  logout: function (req, res) {
+    res.clearCookies('token');
+    res.redirect('/');
+  },
   passwordMatch: function (req, res, next) {
     if (req.body.password === req.body.passwordMatch) {
       next();
@@ -63,9 +67,10 @@ module.exports = {
       const data = {
       id: req.body.id,
       username: req.body.username,
-      email: req.body.email
+      email: req.body.email,
+      // userType:
       }
-
+       // TODO add admin flag
       // Embeddes member object into token
       const token = jwt.sign(data, 'secret', {expiresIn: '10h'}, function (err, token) {
         if (err) res.json(err);
