@@ -15,6 +15,7 @@ const app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
@@ -22,6 +23,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Cookie parser used to sign the cookie
 app.use(cookieParser('secretcookie'));
+
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
@@ -58,32 +60,21 @@ app.use('/api', apiRoutes);
 
 app.use(express.static('./public'));
 
-app.get('/', function (req, res) {
-  res.render('index')
+app.get('/', function(req, res) {
+    res.render('index')
 })
 
-// db.sequelize.sync({ force: false })
-//   .then(function() {
-// });
-http.listen(3000, function(){
-  console.log('http listening on *:3000');
-});
+db.sequelize.sync({ force: false })
+    .then(function() {
+        http.listen(PORT, function() {
+            console.log('http listening on *:3000');
+        });
+    });
 
-// app.listen(PORT, function() {
-//   console.log("App listening on PORT " + PORT);      
-// });
-  
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    console.log('message: ' + msg); 
-   // when the client emits 'new message', this listens and executes
-    io.emit('chat received', msg);
-  });
+io.on('connection', function(socket) {
+    socket.on('chat message', function(msg) {
+        console.log('message: ' + msg);
+        // when the client emits 'new message', this listens and executes
+        io.emit('chat received', msg);
+    });
 });
-
-// db.sequelize.sync({ force: false })
-//   .then(function() {
-//     app.listen(PORT, function() {
-//       console.log("App listening on PORT " + PORT);
-//     });
-// });
