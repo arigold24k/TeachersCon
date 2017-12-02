@@ -3,7 +3,9 @@
 </div>
 
 <div  class="row center">
-	<form action="col s12 m6 offset-m3">
+	<form action="/register" method="post" class="col s12 m6 offset-m3">
+		{{ status }}
+		{{ error }}
 		<div class="input-field col s12">
 		    <label class="grey-text text-lighten-3" style="font-size: 20px;" for="fullname">Full Name</label>
 		    <input type="text" name="fullName" id="fullname" required>

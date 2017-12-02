@@ -1,5 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const jwtExp = require('express-jwt');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const exphbs = require("express-handlebars");
@@ -30,13 +31,14 @@ app.set("view engine", "handlebars");
 
 // Routes for authentication and member pages
 require('./routes/authRoutes')(app);
+require('./routes/htmlRoutes')(app);
 const userRoutes = require('./routes/userRoutes');
 const apiRoutes = require('./routes/apiRoutes')
 
 // Verifies the cookie which have the JWT token embedded
 // All secure routes will use /members route prefix
 app.use('/members', jwtExp({
-    secret: token,
+    secret: 'secrettoken',
     getToken: function fromCookie(req) {
         if (req.signedCookies) {
           // Returns cookie to secure middleware
@@ -48,7 +50,7 @@ app.use('/members', jwtExp({
     }
 }));
 
-app.use('/members', userRoues);
+app.use('/members', userRoutes);
 
 // Verify authorization using express-jwt
 app.use('/api', function (req, res) {
@@ -64,7 +66,7 @@ app.get('/', function(req, res) {
     res.render('index')
 })
 
-db.sequelize.sync({ force: false })
+db.sequelize.sync({ force: true })
     .then(function() {
         http.listen(PORT, function() {
             console.log('http listening on *:3000');

@@ -12,9 +12,13 @@ module.exports = function(sequelize, DataTypes) {
             len: [6,100]
           }
         },
+        password: {
+          type: DataTypes.STRING,
+          allowNull: false
+        },
         address: {
             type: DataTypes.TEXT,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 len: [1, 40]
             }
@@ -30,9 +34,9 @@ module.exports = function(sequelize, DataTypes) {
             onDelete: "cascade"
         });
 
-        Parents.hasMany(models.Grades, {
-            onDelete: "cascade"
-        });
+        // Parents.hasMany(models.Grades, {
+        //     onDelete: "cascade"
+        // });
     };
 
     return Parents;
