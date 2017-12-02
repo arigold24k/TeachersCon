@@ -45,6 +45,22 @@ var orm = {
             cb(result);
         });
     },
+    student: function(teachername, cb) {
+        var queryString = "SELECT * FROM Classrooms WHERE Classrooms.username = " + teachername + ";";
+        connection.query(queryString, function(err, result) {
+            if (err) {
+                throw err;
+            }
+            var teacherid = result[0].id;
+            connection.query("SELECT * FROM Classrooms LEFT JOIN Grades ON Grades.ClassroomId = Classrooms.id WHERE Grades.ClassroomId =" + teacherid + ";",function (err,res) {
+                if(err) {
+                    throw err;
+                }
+                cb(result);
+            })
+
+        });
+    },
     create: function(table, cols, vals, cb) {
         var queryString = "INSERT INTO " + table;
 

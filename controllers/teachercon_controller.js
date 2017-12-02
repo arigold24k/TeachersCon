@@ -2,6 +2,8 @@ var express = require("express");
 
 var router = express.Router();
 
+var teacher = require("../fucntions/teacher.js");
+
 // Import the model (cat.js) to use its database functions.
 // var teacherorm = require("../models/teacherorm.js");
 
