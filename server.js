@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var express = require('express');
 var methodOverride = require('method-override');
 
@@ -9,7 +8,6 @@ var PORT = process.env.PORT || 8080;
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({  extended: false }));
 app.use(bodyParser.json());
-// app.use(methodOverride('_method'));
 
 
 var exphbs = require('express-handlebars');
@@ -92,17 +90,9 @@ app.delete("/Teachers/:ID", function(req, res) {
 	});
 });
 
-// Using the controller.js file instead of the code above //
-// var routes = require('./controllers/controller.js');
-// app.use('/', routes);
-// app.use('/create', routes);
-// app.use('/update', routes);
-// app.use('/delete', routes);
-
 app.listen(PORT, function() {
   console.log("Listening on PORT: " + PORT);
 });
-=======
 const express = require('express');
 const bodyParser = require('body-parser');
 const config = require('./config/config');
@@ -154,4 +144,3 @@ io.on('connection', function(socket){
     io.emit('chat received', msg);
   });
 });
->>>>>>> 236eec02cb27ed4e7d4fd64e02d579c8a7296c34
