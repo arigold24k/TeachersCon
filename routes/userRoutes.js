@@ -5,9 +5,9 @@ router.get('/', function (req, res) {
   res.render('index')
 })
 
-router.get('/register', function (req, res) {
-  res.render('register')
-})
+// router.get('/register', function (req, res) {
+//   res.render('register')
+// })
 
 router.get('/profile', function (req, res) {
   res.render('members')

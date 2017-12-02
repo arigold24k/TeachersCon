@@ -65,25 +65,25 @@ app.get('/', function (req, res) {
 // db.sequelize.sync({ force: false })
 //   .then(function() {
 // });
-http.listen(3000, function(){
-  console.log('http listening on *:3000');
-});
-
-// app.listen(PORT, function() {
-//   console.log("App listening on PORT " + PORT);      
+// http.listen(3000, function(){
+//   console.log('http listening on *:3000');
 // });
-  
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    console.log('message: ' + msg); 
-   // when the client emits 'new message', this listens and executes
-    io.emit('chat received', msg);
-  });
-});
-
-// db.sequelize.sync({ force: false })
-//   .then(function() {
-//     app.listen(PORT, function() {
-//       console.log("App listening on PORT " + PORT);
-//     });
+//
+// // app.listen(PORT, function() {
+// //   console.log("App listening on PORT " + PORT);
+// // });
+//
+// io.on('connection', function(socket){
+//   socket.on('chat message', function(msg){
+//     console.log('message: ' + msg);
+//    // when the client emits 'new message', this listens and executes
+//     io.emit('chat received', msg);
+//   });
 // });
+
+db.sequelize.sync({ force: false })
+  .then(function() {
+    app.listen(PORT, function() {
+      console.log("App listening on PORT " + PORT);
+    });
+});
