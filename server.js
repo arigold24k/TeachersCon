@@ -17,19 +17,6 @@ var exphbs = require('express-handlebars');
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-// Using Handlebars to render index.html
-//dont need this to render
-// app.get("/", function(req, res) {
-// 	connection.query("SELECT * FROM Teachers;", function(err, data) {
-// 		if (err) {
-// 			return res.status(500).end();
-// 		}
-// 		res.render("index", { Teachers: data });
-// 	});
-// });
-
-
-
 app.listen(PORT, function() {
   console.log("Listening on PORT: " + PORT);
 });
@@ -50,7 +37,7 @@ app.use(cookieParser('secretcookie'));
 var routes = require("./controllers/teachercon_controller.js");
 var teacherRoutes = require("./controllers/teacher_controller.js")
 
-app.use("/", routes);
+app.use("/members/reportcard", routes);
 app.use("/Teachers", teacherRoutes);
 
 // Routes for authentication and member pages
@@ -81,20 +68,6 @@ app.get('/', jwtExp({
 });
 
 app.use('/members', userRoutes);
-
-// // Verify authorization using express-jwt
-// app.use('/api', function (req, res) {
-//   jwtExp({ secret: token });
-//   next();
-// });
-//
-// app.use('/api', apiRoutes);
-
-app.use(express.static('./public'));
-
-app.get('/', function(req, res) {
-    res.render('index')
-})
 
 db.sequelize.sync({ force: false })
 
