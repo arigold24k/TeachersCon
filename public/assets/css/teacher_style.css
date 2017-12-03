@@ -1,0 +1,172 @@
+body {
+	background-color: #007897;
+}
+
+h2 {
+	font-family: 'Gorditas', cursive;
+	font-size: 80px;
+	color: #cccccc;
+	margin-top: 100px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+label {
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.about {
+    word-wrap: normal;
+    width: 20%;
+}
+
+.create-form {
+    height: auto;
+}
+
+.copyright {
+    position: relative;
+    width: 60%;
+    padding-top: 120px;
+    text-align: center;
+    /*padding-left: 350px;*/
+    
+}
+
+.icons {
+    padding-top: 130px;   
+    width: 30%;
+    text-align: right;
+    padding-right: 1    5px;
+}
+
+.welcome {
+    font-family: 'Gorditas', cursive;
+    color: #cccccc;
+    font-size: 25px;    
+    text-align: center;
+
+}
+
+
+.teacherchat {
+    background-color: #cccccc; 
+    width: 1000px;
+    height: 500px;
+    align-content: center;
+}
+h3 {
+	font-family: 'Gorditas', cursive;
+	font-size: 20px;	
+	color: #cccccc;
+}	
+
+h4 {
+    font-family: 'Gorditas', cursive;
+    color: #007897;
+    font-size: 20px;
+    padding: 10px;
+    font-style: bold;
+ }
+
+ h5 {
+    font-family: 'Ubuntu', sans-serif;
+    color: #007897;
+    font-size: 15px;
+    padding: 10px;  
+    word-wrap: normal;
+ }
+    
+.container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.container1 {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	padding-top: 20px;
+
+}
+
+.container2 {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+label {
+	color: #cccccc;	
+}
+
+.regBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.regisinput {
+    width: 250px;
+}
+
+
+.animate {
+    float: center;
+    -webkit-animation-name: Floatingx;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-name: Floating;
+    -moz-animation-duration: 3s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
+
+}
+
+@-webkit-keyframes Floatingx{
+    from {-webkit-transform:translate(0, 0px);}
+    65% {-webkit-transform:translate(0, 15px);}
+    to {-webkit-transform: translate(0, -0px);    }    
+}
+    
+@-moz-keyframes Floating{
+    from {-moz-transform:translate(0, 0px);}
+    65% {-moz-transform:translate(0, 15px);}
+    to {-moz-transform: translate(0, -0px);}    
+}
+
+.scaling{
+    float: center;
+    -webkit-animation-name: scalex;
+    -webkit-animation-duration:3s;
+    -webkit-animation-iteration-count:infinite;
+    -webkit-animation-timing-function:ease-in-out;
+    -moz-animation-name: scale;
+    -moz-animation-duration:3s;
+    -moz-animation-iteration-count:infinite;
+    -moz-animation-timing-function:ease-in-out;
+}
+    
+    @-webkit-keyframes scalex{
+        from {-webkit-transform: scale(0.9);}
+        65% {-webkit-transform: scale(1.0);}
+        to {-webkit-transform: scale(0.9);}    
+    }
+        
+    @-moz-keyframes scale{
+        from {-moz-transform: scale(0.9);}
+        65% {-moz-transform: scale(1.0);}
+        to {-moz-transform: scale(0.9);}    
+    }

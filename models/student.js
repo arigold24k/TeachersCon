@@ -8,8 +8,9 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             defaultValue: "",
+            unique: true,
             validate: {
-                len: [1, 40]
+                len: [1,100]
             }
         },
         classroom: {

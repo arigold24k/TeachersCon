@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col s12" style="padding-bottom: 40px;">
+    <ul class="tabs teal lighten-5 blue-grey-text">
+      <li class="tab col s3"><a href="/reports">Progress Reports</a></li>
+      <li class="tab col s3"><a href="/chat">Chat</a></li>
+      <li class="tab col s3"><a href="/calendar">Calendar</a></li>
+      <li class="tab col s3"><a href="/feedback">Feedback</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="row center">
+  <h2 class="grey-text text-lighten-3" style="font-size: 70px;">Feedback</h2>
+  <h2 class="grey-text text-lighten-3" style="font-size: 20px; margin-top: 10px;">Your opinion matters</h2>
+</div> 
+
+<div class="row-center" method="post">
+  <div class="input-field col s12">
+    <label class="grey-text text-lighten-3" style="font-size: 20px;" for="comment">Comment</label>
+    <input type="text" class="regisinput" id="comment" required> 
+  </div>
+</div>
+
+<div class="row center">
+  <button class="waves-effect waves-light btn black" style="margin-bottom: 5%;" type="submit" id="submitComment">Submit</button> 
+</div>    
+
+
+<script>
+// Initialize Firebase
+var config = {
+    apiKey:             "AIzaSyDVtLkMFEnRz-n-1adqa4UN34CoUy7oTYE",
+    authDomain:         "gtcbc7and2.firebaseapp.com",
+    databaseURL:        "https://gtcbc7and2.firebaseio.com",
+    projectId:          "gtcbc7and2",
+    storageBucket:      "gtcbc7and2.appspot.com",
+    messagingSenderId:  "759565880970"
+};
+firebase.initializeApp(config);
+var database = firebase.database();
+// User Input & Submition
+var userName    = "";
+var userSubject = "";
+var userCom     = "";
+var userNewCom  = "";
+$('#submit').on("click", function(event) {
+    event.preventDefault();
+    
+    userName    = $("#name").val().trim();
+    userSubject = $("#Subject").val().trim();
+    userCom     = $("#com").val().trim();
+    
+    database.ref().push({
+        topic: userSubject,
+        name: userName,
+        comment: userCom,
+        newComments: userNewCom
+    });
+    $("#name").val('');
+    $("#Subject").val('');
+    $("#com").val('');
+}); 
+    
+</script>		

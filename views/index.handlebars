@@ -1,1 +1,44 @@
-index.handlebars
+<!-- Page Title -->
+<div class="row center">
+  <h2 class="grey-text text-lighten-3" style="font-size: 70px;">Teacher-Con</h2>
+</div>
+
+<!-- Logo Image -->
+<center>
+  <div class="animated infinite swing">
+    <img src="/assets/img/imageedit_1_3937821306.png" alt="Teacher Apple" id="apple" width="200" height="200">
+  </div>
+</center>
+<br><br>
+
+
+<!-- Load "login.handlears" File (member's login code) -->
+{{> login }}
+
+
+<!-- New User Login Details -->
+<form action="create-form">
+	<div class="container">
+    
+    <label for="email"><b>Email</b></label>
+	  <input type="text" placeholder="Enter Email" name="email" id="email" style="font-size: 20px;" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" id="psw" style="font-size: 20px;" required>
+	  <br>
+
+	</div>
+</form>
+<br>
+
+<!-- New User Login/Submit -->
+<div class="row center">
+
+	<div class="input-field col s12">
+	     <button class="waves-effect waves-light btn black" style="margin-bottom: 5%;" type="submit">Login</button>
+	</div>
+
+  <!-- <input type="checkbox" checked="checked"> Remember me -->
+	<button class="waves-effect waves-light btn black" style="margin-bottom: 5%;" type="submit">Sign Up</button>
+
+</div> 
