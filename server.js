@@ -86,11 +86,9 @@ app.use('/api', function (req, res) {
 });
 app.use('/api', apiRoutes);
 
-app.use(express.static('./public'));
-
 app.get('/', function(req, res) {
     res.render('index')
-})
+});
 
 db.sequelize.sync({ force: true })
     .then(function() {
