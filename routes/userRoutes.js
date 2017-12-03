@@ -9,18 +9,19 @@ router.get('/register', function (req, res) {
   res.render('register')
 })
 
-router.get('/profile', function (req, res) {
-  res.render('members')
-})
 
 router.get('/chat', function (req, res) {
   res.render('chat')
 })
 
+router.get('/profile', function (req, res) {
+  res.render('members')
+})
+
+// Render HTML page and req.member contains the payload from token
 router.get('/profile', function(req, res) {
-// render HTML page
-// req.member contains the payload from token
     res.render('members', { user: req.member });
 });
+
 
 module.exports = router;

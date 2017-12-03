@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const db = require('../models');
 
-
 const exp = {
     logout: function (req, res) {
         res.clearCookies('token');
