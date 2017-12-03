@@ -2,7 +2,8 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "user_db",
+
+    "database": "teachercon_DB",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
@@ -14,7 +15,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "use_env_variable": "JAWS_DB_URL",
+    "username": "root",
+    "password": null,
+    "database": "JAWS_DB_URL",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   }
 }
