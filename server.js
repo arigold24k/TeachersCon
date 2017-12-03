@@ -34,10 +34,8 @@ var io = require('socket.io')(http);
 // Cookie parser used to sign the cookie
 app.use(cookieParser('secretcookie'));
 
-var routes = require("./controllers/teachercon_controller.js");
 var teacherRoutes = require("./controllers/teacher_controller.js")
 
-app.use("/members/reportcard", routes);
 app.use("/Teachers", teacherRoutes);
 
 // Routes for authentication and member pages
