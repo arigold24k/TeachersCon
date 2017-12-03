@@ -1,6 +1,6 @@
 const path = require("path");
 const db = require("./models");
-var express = require('express');
+const express = require('express');
 var methodOverride = require('method-override');
 
 const app = express();
@@ -20,12 +20,10 @@ app.set('view engine', 'handlebars');
 app.listen(PORT, function() {
   console.log("Listening on PORT: " + PORT);
 });
-const express = require('express');
+
 const jwt = require('jsonwebtoken');
 const jwtExp = require('express-jwt');
-const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const exphbs = require("express-handlebars");
 const config = require('./config/config');
 
 var http = require('http').Server(app);
