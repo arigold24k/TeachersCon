@@ -1,52 +1,29 @@
 <div class="row">
-    <div class="col s12">
-        <ul class="tabs teal lighten-5 blue-grey-text">
-            <li class="tab col s3" style="b"><a href="/reports">Progress Reports</a></li>
-            <li class="tab col s3"><a class="active" href="/chat">Chat</a></li>
-            <li class="tab col s3"><a href="/calendar">Calendar</a></li>
-            <li class="tab col s3"><a href="/feedback">Feedback</a></li>
-        </ul>
-    </div>
+  <div class="col s12" style="padding-bottom: 40.1px;">
+    <ul class="tabs teal lighten-5 blue-grey-text">
+      <li class="tab col s3"><a href="/reports">Progress Reports</a></li>
+      <li class="tab col s3"><a href="/chat">Chat</a></li>
+      <li class="tab col s3"><a href="/calendar">Calendar</a></li>
+      <li class="tab col s3"><a href="/feedback">Feedback</a></li>
+    </ul>
+  </div>
 </div>
 
-<div class="row">
-    <h2 class="grey-text text-lighten-3">Feedback</h2>
-    <p class="grey-text text-lighten-3">Your opinion matters</p>
-    <hr>
+<div class="row center">
+  <h2 class="grey-text text-lighten-3" style="font-size: 70px;">Feedback</h2>
+  <h2 class="grey-text text-lighten-3" style="font-size: 20px; margin-top: 10px;">Your opinion matters</h2>
 </div> 
 
 <div class="row-center" method="post">
-    <form action="col s12 m6 offest-m3">
-        <div class="row">
-            <div class="input-field col s12">
-                <label class="grey-text text-lighten-3" for="userName">Name:</label>
-                <input type="text" class="regisinput" id="userName" placeholder="Full Name" required>
-            </div>
-
-            <div>
-                <label class="grey-text text-lighten-3" for="email">Email Address:</label>
-                <input type="text" class="regisinput" id="email" placeholder="Enter Email" required>
-            </div>
-
-            <div>
-                <label class="grey-text text-lighten-3" for="subject">Subject:</label>
-                <input type="text" class="regisinput" id="subject" placeholder="Subject title" required>
-            </div>
-
-            <div>
-                <label class="grey-text text-lighten-3" for="comment">Comment:</label>
-                <textarea type="text" class="regisinput" id="comment" placeholder="Enter in your comment" required></textarea> 
-            </div>
-        </div>
-    </form>
-    <hr>
-    
-    <button class="waves-effect waves-light btn black" style="margin-bottom: 5%;" type="submit" id="submitComment">Submit</button> 
+  <div class="input-field col s12">
+    <label class="grey-text text-lighten-3" style="font-size: 20px;" for="comment">Submit your comment below</label>
+    <input type="text" class="regisinput" id="comment" required> 
+  </div>
 </div>
 
-<footer class="text-center">
-    <p>&copy; 2017, Andy K</p>
-</footer>
+<div class="row center">
+  <button class="waves-effect waves-light btn black" style="margin-bottom: 5%;" type="submit" id="submitComment">Send</button> 
+</div>    
 
 
 <script>
@@ -67,7 +44,6 @@ var userName    = "";
 var userSubject = "";
 var userCom     = "";
 var userNewCom  = "";
-
 $('#submit').on("click", function(event) {
     event.preventDefault();
     
@@ -81,10 +57,9 @@ $('#submit').on("click", function(event) {
         comment: userCom,
         newComments: userNewCom
     });
-
     $("#name").val('');
     $("#Subject").val('');
     $("#com").val('');
 }); 
     
-</script>
+</script>		

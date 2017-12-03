@@ -1,76 +1,44 @@
-<h1>Teachers Con!</h1>
-<h3>List of Teachers:</h3>
+<!-- Page Title -->
+<div class="row center">
+  <h2 class="grey-text text-lighten-3" style="font-size: 70px;">Teacher-Con</h2>
+</div>
 
-<ol>
-  {{#each Teachers}}
-    <li>
-      <p>
-        {{this.TeacherName}}
-        <button data-teacherid = "{{this.ID}}" class = "delTeacher">Delete</button>
-      </p>
-    </li>
-  {{/each}}  
-</ol>
+<!-- Logo Image -->
+<center>
+  <div class="animated infinite swing">
+    <img src="/assets/img/imageedit_1_3937821306.png" alt="Teacher Apple" id="apple" width="200" height="200">
+  </div>
+</center>
+<br><br>
 
-<h2>Add Teacher's Name</h2>
-<form id="addTeacher" class="button-size">
-  <textarea type="text" name="TeacherName" placeholder="Full name"></textarea>
-  <button type="submit">Add</button>
+
+<!-- Load "login.handlears" File (member's login code) -->
+{{> login }}
+
+
+<!-- New User Login Details -->
+<form action="create-form">
+	<div class="container">
+    
+    <label for="email"><b>Email</b></label>
+	  <input type="text" placeholder="Enter Email" name="email" id="email" style="font-size: 20px;" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" id="psw" style="font-size: 20px;" required>
+	  <br>
+
+	</div>
 </form>
+<br>
 
-<h2>Update Teacher's Name</h2>
-<form id="updateTeacher" class="button-size">
-  <input type="text" name="id" placeholder="Insert ID Number">
-  <textarea type="text" placeholder="Insert Name"></textarea>  
-  <button type="submit">Update Name</button>
-</form>
+<!-- New User Login/Submit -->
+<div class="row center">
 
+	<div class="input-field col s12">
+	     <button class="waves-effect waves-light btn black" style="margin-bottom: 5%;" type="submit">Login</button>
+	</div>
 
-<script type="text/javascript">
-// Delete Teacher
-  $(".delTeacher").on("click", function(event) {
-    var id = $(this).data("teacherid");
+  <!-- <input type="checkbox" checked="checked"> Remember me -->
+	<button class="waves-effect waves-light btn black" style="margin-bottom: 5%;" type="submit">Sign Up</button>
 
-    $.ajax("/Teachers/" + id, {
-      type: "DELETE"
-    }).then(function() {
-      console.log("Deleted ID: " + id);
-      location.reload();
-    });
-  });
-
-// Add a Teacher
-  $("#addTeacher").on("submit", function(event) {
-    event.preventDefault();
-
-    var addTeacher = {
-      TeacherName: $("#addTeacher [name = TeacherName]").val().trim()
-    };
-
-    $.ajax("/Teachers", {
-      type: "POST",
-      data: addTeacher
-    }).then(function() {
-      console.log("Added Teacher: " + addTeacher);
-      location.reload();
-    });
-  });
-
-// Update Teacher
-  $("#updateTeacher").on("submit", function(event) {
-    event.preventDefault();
-
-    var id = $("[name=id]").val().trim();
-    var updateTeacher = {
-      Teachers: $("#updateTeacher [name=Teachers]").val().trim()
-    };
-
-    $.ajax("/Teachers" + id, {
-      type: "PUT",
-      data: updateTeacher
-    }).then(function() {
-      console.log("Updated ID: " + id + ". " + updateTeacher);
-      location.reload();
-    });
-  });
-</script>
+</div> 

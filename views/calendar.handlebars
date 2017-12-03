@@ -1,0 +1,50 @@
+<style type="text/css">
+	#calendar-container {
+		padding: 			10px;
+		width: 				210px;
+		height: 			210px;
+		text-align: 		center;
+		border: 			1px solid #eee;
+		border-radius: 		10px;
+		font-size: 			16px;
+		font-family: 		Arial;
+		background-image: 	linear-gradient(#fff, #d3d3d3);
+	}
+
+	#calendar-container>div {
+		padding: 		0;
+		margin-bottom: 	10px;
+	}
+
+	#calendar-month-year {
+		margin: 5px;
+	}
+
+	#calendar-dates>table>tr>td {
+		padding: 5px;
+	}
+</style>
+
+<div class="row">
+  <div class="col s12" style="padding-bottom: 40px;">
+    <ul class="tabs teal lighten-5 blue-grey-text">
+      <li class="tab col s3"><a href="/reports">Progress Reports</a></li>
+      <li class="tab col s3"><a href="/chat">Chat</a></li>
+      <li class="tab col s3"><a href="/calendar">Calendar</a></li>
+      <li class="tab col s3"><a href="/feedback">Feedback</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="row center">
+  <h2 class="grey-text text-lighten-3" style="font-size: 70px;">Calendar</h2>
+</div> 
+
+
+<div id="calendar-container">
+  <div id="calendar-header">
+    <span id="calendar-month-year"></span>
+  </div>
+
+  <div id="calendar-dates"></div>
+</div>
