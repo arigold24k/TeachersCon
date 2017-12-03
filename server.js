@@ -44,11 +44,8 @@ const config = require('./config/config');
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-
 // Cookie parser used to sign the cookie
 app.use(cookieParser('secretcookie'));
-
-
 
 var routes = require("./controllers/teachercon_controller.js");
 var teacherRoutes = require("./controllers/teacher_controller.js")
@@ -64,33 +61,43 @@ const apiRoutes = require('./routes/apiRoutes')
 
 // Verifies the cookie which have the JWT token embedded
 // All secure routes will use /members route prefix
-app.use('/members', jwtExp({
-    secret: 'secrettoken',
-    getToken: function fromCookie(req) {
-        if (req.signedCookies) {
-          // Returns cookie to secure middleware
-            return req.signedCookies.token;
-            next();
-        }
-        // Returns null which creates an error
-        return null;
+
+app.get('/', jwtExp({
+  secret: 'secretCookie',
+  getToken: function fromCookie(req) {
+    if (req.signedCookies) {
+      return req.signedCookies.token;
     }
-}));
+    return null;
+  },
+  credentialsRequired: false
+}), function (req, res, next) {
+  // if user is signed-in, next()
+  if (req.user) {
+    next();
+  } else {
+    res.redirect('/members');
+  }
+});
 
 app.use('/members', userRoutes);
 
-// Verify authorization using express-jwt
-app.use('/api', function (req, res) {
-  jwtExp({ secret: token });
-  next();
-});
-app.use('/api', apiRoutes);
+// // Verify authorization using express-jwt
+// app.use('/api', function (req, res) {
+//   jwtExp({ secret: token });
+//   next();
+// });
+//
+// app.use('/api', apiRoutes);
+
+app.use(express.static('./public'));
 
 app.get('/', function(req, res) {
     res.render('index')
-});
+})
 
-db.sequelize.sync({ force: true })
+db.sequelize.sync({ force: false })
+
     .then(function() {
         http.listen(PORT, function() {
             console.log('http listening on *:3000');

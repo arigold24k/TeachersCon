@@ -2,7 +2,7 @@ const authentication =  require('../controllers/authenticationController');
 const router = require('express').Router();
 
 router.get('/', function (req, res) {
-  res.render('index')
+  res.render('members')
 })
 
 router.get('/register', function (req, res) {

@@ -2,7 +2,7 @@ module.exports = function(sequelize, DataTypes) {
     var Parents = sequelize.define("Parents", {
         username: {
             type: DataTypes.STRING,
-            defaultValue: "A"
+            // defaultValue: "A"
         },
         email: {
             type: DataTypes.STRING,
@@ -10,6 +10,10 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 len: [1, 40]
             }
+        },
+        password: {
+          type: DataTypes.STRING,
+          allowNull: false
         },
         password: {
           type: DataTypes.STRING,
@@ -32,7 +36,6 @@ module.exports = function(sequelize, DataTypes) {
         Parents.hasMany(models.Student, {
             onDelete: "cascade"
         });
-
 
         Parents.hasMany(models.Grades, {
             onDelete: "cascade"
