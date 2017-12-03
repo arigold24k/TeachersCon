@@ -54,7 +54,7 @@ var routes = require("./controllers/teachercon_controller.js");
 var teacherRoutes = require("./controllers/teacher_controller.js")
 
 app.use("/", routes);
-app.use("/Teachers, teacherRoutes);
+app.use("/Teachers", teacherRoutes);
 
 // Routes for authentication and member pages
 require('./routes/authRoutes')(app);
