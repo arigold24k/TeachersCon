@@ -12,8 +12,40 @@
 	<br>
 	<div class="row center">
 		<div class="input-field col s12">
-		     <button class="waves-effect waves-light btn black" style="margin-bottom: 5%;" type="submit">Login</button>
-		</div>   
+		     <button class="waves-effect waves-light btn black" type="submit" id="submit">Login</button>
+		</div>
+        <div class="input-field col s12">
+            <button class="waves-effect waves-light btn black" style="margin-bottom: 5%;" type="button" id="registerbt">Register</button>
+        </div>
+    </div>
 	   {{!--  <input type="checkbox" checked="checked"> Remember me --}}
 	</div>
 </form>
+
+<script>
+    $(document).on("click", "#submit", function() {
+        event.preventDefault();
+        var newUser = {
+          email: $("#email").val(),
+          password: $("#psw").val()
+        };
+
+        $.ajax("/login", {
+            type: "POST",
+            data: newUser
+        }).then(
+                function() {
+                    console.log("Logged in succesfully");
+                    // Reload the page to get the updated list
+                }
+        );
+    });
+
+    $(document).on("click", "#registerbt", function () {
+        window.location.href = "/register";
+    });
+
+
+
+
+</script>

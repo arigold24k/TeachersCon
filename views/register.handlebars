@@ -39,3 +39,38 @@
 	    <button class="waves-effect waves-light btn black" type="submit" id="registerbtn">Register</button>
 	</form>
 </div>
+
+<script>
+
+    $(document).on("click", "#registerbtn", function () {
+        event.preventDefault();
+        var address = $("#address").val();
+        var username = $("#fullname").val();
+        var email = $("#email").val();
+        var password = $("#password").val();
+        var phonenum = $("#phone").val();
+
+        var newUser = {
+            username: username,
+            password: password,
+            phonenum: phonenum,
+            address: address,
+            email: email
+        };
+
+        console.log(newUser);
+
+        $.ajax("/register", {
+            type: "POST",
+            data: newUser
+        }).then(function() {
+                    console.log("Added a new Parent");
+                    // Reload the page to get the updated list
+                    window.location.href = "/login";
+                }
+        );
+
+    })
+
+
+</script>

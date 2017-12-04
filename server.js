@@ -17,9 +17,13 @@ var exphbs = require('express-handlebars');
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-app.listen(PORT, function() {
-  console.log("Listening on PORT: " + PORT);
-});
+
+app.get('/', function(req, res) {
+    res.render('index')
+})
+// app.listen(PORT, function() {
+//   console.log("Listening on PORT: " + PORT);
+// });
 
 const jwt = require('jsonwebtoken');
 const jwtExp = require('express-jwt');
@@ -32,15 +36,15 @@ var io = require('socket.io')(http);
 // Cookie parser used to sign the cookie
 app.use(cookieParser('secretcookie'));
 
-var teacherRoutes = require("./controllers/teacher_controller.js")
+// var teacherRoutes = require("./controllers/teacher_controller.js");
 
-app.use("/Teachers", teacherRoutes);
+// app.use("/Teachers", teacherRoutes);
 
 // Routes for authentication and member pages
 require('./routes/authRoutes')(app);
 require('./routes/htmlRoutes')(app);
 const userRoutes = require('./routes/userRoutes');
-const apiRoutes = require('./routes/apiRoutes')
+const apiRoutes = require('./routes/apiRoutes');
 
 // Verifies the cookie which have the JWT token embedded
 // All secure routes will use /members route prefix
@@ -69,7 +73,7 @@ db.sequelize.sync({ force: false })
 
     .then(function() {
         http.listen(PORT, function() {
-            console.log('http listening on *:3000');
+            console.log('http listening on *:8080');
         });
     });
 

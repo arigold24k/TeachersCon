@@ -4,13 +4,13 @@ var parent = require("../fucntions/parent");
 
 const router = require('express').Router();
 
-router.get('/', function (req, res) {
+router.get('/members', function (req, res) {
   res.render('members')
-})
+});
 
 router.get('/register', function (req, res) {
   res.render('register')
-})
+});
 
 router.get("/reportcard", function(req, res) {
 //call function from teacherorm
@@ -33,11 +33,11 @@ router.get("/reportcard", function(req, res) {
 
 router.get('/chat', function (req, res) {
   res.render('chat')
-})
+});
 
-router.get('/profile', function (req, res) {
-  res.render('members')
-})
+// router.get('/profile', function (req, res) {
+//   res.render('members')
+// });
 
 // Render HTML page and req.member contains the payload from token
 router.get('/profile', function(req, res) {

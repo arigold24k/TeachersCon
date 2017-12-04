@@ -18,7 +18,7 @@ const exp = {
     register: function (req, res) {
         bcrypt.genSalt(10, function (err, salt) {
             if (err) {
-                console.log('err', err)
+                console.log('err', err);
                 res.render('register', {
                     status: 'Unable to create account.',
                     error: err
@@ -27,14 +27,19 @@ const exp = {
                 // Hashes the password before it is stored int the database
                 bcrypt.hash(req.body.password, salt, function (err, hash) {
                     db.Parents.create({
+                        username: req.body.username,
                         email: req.body.email,
-                        password: hash
+                        address: req.body.address,
+                        phoneNumber: req.body.phonenum,
+                        password: hash,
+
                     })
-                        .then(function () {
+                        .then(function (data) {
+                            console.log(data);
                             res.redirect('/login');
                         })
                         .catch(function (err) {
-                            console.log(err)
+                            console.log(err);
                             // Re-render registration page in order to send status to front end.
                             res.status(401).render('register', {
                                 'status': 'Unable to create user with info provided.',
@@ -56,9 +61,9 @@ const exp = {
             where: {
                 email: req.body.email
             }
-        })
-            .then(function (user) {
+        }).then(function (user) {
                 // Checks for user in database
+                console.log("this is the log", user);
                 if (!user) {
                     res.render('index', {'status': 'email does not match.'/*'Username or password is incorrect.' */})
                 } else {
@@ -67,13 +72,16 @@ const exp = {
                         // Checks if password matches
                         if (err || !isValid) {
                             res.render('index', {'status': 'password does not match.'/*'Username or password is incorrect.'*/});
-                        } else {
+                        }
+
+                        else {
                             // User info that will be embedded into the token
                             const data = {
                                 id: req.body.id,
                                 username: req.body.username,
                                 email: req.body.email,
                             };
+
                             // TODO add admin flag
                             // Embeddes member object into token
                             const token = jwt.sign(data, {expiresIn: '10h'}, function (err, token) {
@@ -87,18 +95,20 @@ const exp = {
                                 //     message: 'Authenticated! Use this token in the "Authorization" header',
                                 //     token: token
                                 // });
-
+                                console.log("signed in");
                                 // redirect user to secure route
                                 res.redirect('/members')
                             }, 'secretcookie');
                         }
+
+
+
                     })
-                        .catch(function (err) {
-                            console.log(err)
-                            //res.status(400).send({ 'status': 'Username or password is not valid.' });
-                        });
                 }
-            })
+            }).catch(function (err) {
+            console.log(err)
+            //res.status(400).send({ 'status': 'Username or password is not valid.' });
+        });
     },
 };
 module.exports = exp;
