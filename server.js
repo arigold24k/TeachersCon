@@ -18,9 +18,7 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 
-app.get('/', function(req, res) {
-    res.render('index')
-})
+
 // app.listen(PORT, function() {
 //   console.log("Listening on PORT: " + PORT);
 // });
@@ -67,7 +65,7 @@ app.get('/', jwtExp({
   }
 });
 
-app.use('/members', userRoutes);
+app.use('/', userRoutes);
 
 db.sequelize.sync({ force: false })
 

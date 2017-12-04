@@ -63,7 +63,7 @@ const exp = {
             }
         }).then(function (user) {
                 // Checks for user in database
-                console.log("this is the log", user);
+                console.log("this is the log", user.dataValues.id);
                 if (!user) {
                     res.render('index', {'status': 'email does not match.'/*'Username or password is incorrect.' */})
                 } else {
@@ -77,11 +77,11 @@ const exp = {
                         else {
                             // User info that will be embedded into the token
                             const data = {
-                                id: req.body.id,
-                                username: req.body.username,
-                                email: req.body.email,
+                                id: user.dataValues.id,
+                                username: user.dataValues.username,
+                                email: user.dataValues.email,
                             };
-
+                            console.log(data);
                             // TODO add admin flag
                             // Embeddes member object into token
                             const token = jwt.sign(data, {expiresIn: '10h'}, function (err, token) {

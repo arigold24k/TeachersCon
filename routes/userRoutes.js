@@ -4,6 +4,10 @@ var parent = require("../fucntions/parent");
 
 const router = require('express').Router();
 
+router.get('/', function(req, res) {
+    res.render('index')
+});
+
 router.get('/members', function (req, res) {
   res.render('members')
 });
