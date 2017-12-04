@@ -64,47 +64,43 @@ const exp = {
         }).then(function (user) {
                 // Checks for user in database
                 console.log("this is the log", user.dataValues.id);
-                if (!user) {
-                    res.render('index', {'status': 'email does not match.'/*'Username or password is incorrect.' */})
+            if (!user) {
+                res.render('index', {'status': 'Username or password is incorrect.'});
+            } else {
+                // Load hash from your password DB.
+                let passCheck = bcrypt.compareSync(req.body.password, user.password); // true
+
+                if (!passCheck) {
+                    res.render('index', {'status': 'Username or password is incorrect.'})
                 } else {
-                    // Load hash from your password DB.
-                    bcrypt.compare(req.body.password, user.password, function (err, isValid) {
-                        // Checks if password matches
-                        if (err || !isValid) {
-                            res.render('index', {'status': 'password does not match.'/*'Username or password is incorrect.'*/});
+
+                    // User info that will be embedded into the token
+                    const data = {
+                        id: user.dataValues.id,
+                        username: user.dataValues.username,
+                        email: user.dataValues.email,
+                    };
+                    console.log(data);
+                    // TODO add admin flag
+                    // Embeddes member object into token
+                    // create JWT token
+                    var jwtAuthToken = jwt.sign({
+                        exp: Math.floor(Date.now() / 1000) + (60 * 60),
+                        data: {
+                            id: user.id,
+                            username: user.username,
+                            email: user.email
                         }
-
-                        else {
-                            // User info that will be embedded into the token
-                            const data = {
-                                id: user.dataValues.id,
-                                username: user.dataValues.username,
-                                email: user.dataValues.email,
-                            };
-                            console.log(data);
-                            // TODO add admin flag
-                            // Embeddes member object into token
-                            const token = jwt.sign(data, {expiresIn: '10h'}, function (err, token) {
-                                if (err) res.json(err);
-                                res.cookie('token', token, {
-                                    secure: process.env.NODE_ENV === 'production',
-                                    signed: true
-                                });
-
-                                // res.json({
-                                //     message: 'Authenticated! Use this token in the "Authorization" header',
-                                //     token: token
-                                // });
-                                console.log("signed in");
-                                // redirect user to secure route
-                                res.redirect('/members')
-                            }, 'secretcookie');
-                        }
-
-
-
-                    })
+                    }, 'secretCookie');
+                    // Create a cookie embedding JWT token
+                    res.cookie('jwtAuthToken', jwtAuthToken, {
+                        secure: process.env.NODE_ENV === 'production',
+                        signed: true
+                    });
+                    // redirect user to secure app
+                    res.redirect('/members')
                 }
+            }
             }).catch(function (err) {
             console.log(err)
             //res.status(400).send({ 'status': 'Username or password is not valid.' });

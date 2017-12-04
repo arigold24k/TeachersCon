@@ -9,18 +9,25 @@ router.get('/', function(req, res) {
 });
 
 router.get('/members', function (req, res) {
-  res.render('members')
+    res.render('members', { user: req.member });
 });
 
 router.get('/register', function (req, res) {
   res.render('register')
 });
 
+
 router.get("/reportcard", function(req, res) {
 //call function from teacherorm
-        parent.retrieve(function (data) {
-            var average = ((Number(data[0].math) + Number(data[0].reading) + Number(data[0].socialstudies) + Number(data[0].science)) / 4);
-            var hbsObject = {
+    parent.retrieve(function (data) {
+        var hbsObject;
+        if(data[0] === undefined) {
+            console.log("no data");
+            res.render("reportcard");
+        }else {
+            console.log(data);
+            var average = ((Number(data[0].math) + Number(data[0].reading) + Number(data[0].socialstudies) + Number(data[0].science))/ 4);
+            hbsObject = {
                 name: data[0].username,
                 math: data[0].math,
                 reading: data[0].reading,
@@ -31,9 +38,10 @@ router.get("/reportcard", function(req, res) {
             console.log(data);
             console.log(hbsObject);
             res.render("reportcard", hbsObject);
-        });
-
+        }
     });
+
+});
 
 router.get('/chat', function (req, res) {
   res.render('chat')
@@ -44,9 +52,9 @@ router.get('/chat', function (req, res) {
 // });
 
 // Render HTML page and req.member contains the payload from token
-router.get('/profile', function(req, res) {
-    res.render('members', { user: req.member });
-});
+// router.get('/profile', function(req, res) {
+//     res.render('members', { user: req.member });
+// });
 
 
 module.exports = router;
