@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
-</head>
-<body>
-
-<head>
   <title>Calendar</title>
 </head>
+<body>
 
 <div class="row">
   <div class="col s12" style="padding-bottom: 40px;">
@@ -33,6 +29,113 @@
   <div id="calendar-dates"></div>
 </div>
 
+
+<style type="text/css">
+  #calendar-container {
+    padding:      10px;
+    width:        210px;
+    height:       210px;
+    text-align:     center;
+    border:       1px solid #eee;
+    border-radius:    10px;
+    font-size:      16px;
+    font-family:    Arial;
+    background-image:   linear-gradient(#fff, #d3d3d3);
+  }
+
+  #calendar-container>div {
+    padding:    0;
+    margin-bottom:  10px;
+  }
+
+  #calendar-month-year {
+    margin: 5px;
+  }
+
+  #calendar-dates>table>tr>td {
+    padding: 5px;
+  }
+</style>
+
+
+
+<script type="text/javascript">
+// "table" means Calendar
+// "tr" means Table Row
+// "td" means Table Data
+
+window.onload = function calendar() {
+  var d       = new Date();
+  var month_name  = ['January', 'February','March','April','May','June','July','August','September','October','November','December'];
+  var month     = d.getMonth();
+  var year    = d.getFullYear();
+  var first_date  = month_name[month] + " " + 1 + " " + year;
+  var tmp     = new Date(first_date).toDateString();
+  var first_day = tmp.substring(0, 3);
+  var day_name  = ['Sun','Mon','Tues','Wed','Thur','Fri','Sat'];
+  var day_no    = day_name.indexOf(first_date) +2;
+  var days    = new Date(year, month+1, 0).getDate();
+  var calendar  = get_calendar(days);
+
+  document.getElementById("calendar-month-year").innerHTML = month_name[month] + ", " + year;
+
+  // document.getElementById("calendar-dates").appendChild(calendar);
+
+console.log(days);
+}
+
+function get_calendar(day_no, days) {
+  var table = document.createElement('table');
+  var tr    = document.createElement('tr');
+  var td    = document.createElement('td');
+
+  // First Row: Days of the Week
+  for (var i = 0; i <= 6; i++) {
+    td.innerHTML = "SMTWTFS"[i];
+    tr.appendChild(td);
+  }
+  table.appendChild(tr);
+
+  
+  // Second Row: Days of the Month
+  tr = document.createElement('tr');
+
+  for (var i = 0; i <= 6; i++) {
+    if (i == day_no) {
+      break;
+    }
+    var td = document.createElement('td');
+    td.innerHTML = "";
+    tr.appendChild(td);
+  }
+
+  var count = 1;
+  for (var i; i <= 6; i++) {
+    var td = document.createElement('td');
+    td.innerHTML = count;
+    count++;
+    tr.appendChild(td);
+  }
+  table.appendChild(tr);
+
+  
+  // The remaining rows: Days of the month
+  for (var r = 3; r <= 6; r++) {
+    tr = document.createElement('tr');
+    for (var i = 0; i <= 6; i++) {
+      if (count > days) {
+        table.appendChild(tr);
+        return table;
+      }
+      var td = document.createElement('td');
+      td.innerHTML = count;
+      count++;
+      tr.appendChild(td);
+    }
+    table.appendChild(tr);
+  }
+}
+</script>
 
 </body>
 </html>
