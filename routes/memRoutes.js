@@ -18,6 +18,10 @@ router.get('/register', function (req, res) {
     res.render('register');
 });
 
+router.get('/calendar', function (req, res) {
+    res.render('calendar');
+});
+
 router.get('/profile', function (req, res) {
     res.render('members');
 });
