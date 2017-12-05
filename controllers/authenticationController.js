@@ -37,7 +37,25 @@ const exp = {
 
                     })
                         .then(function (data) {
-                            console.log(data);
+                            console.log("this is the data from the first call", data);
+                            var classname;
+                            if(req.body.classID === 1) {
+                                classname = "A"
+                            }else {
+                                classname= "B"
+                            }
+
+
+                            db.Student.create({
+                                username: req.body.childname,
+                                email: req.body.childemail,
+                                classroom: classname,
+                                ClassroomId: req.body.classid,
+                                ParentId: data.dataValues.id
+
+                            }).then(function(data1) {
+                                console.log(data1);
+                            });
                             res.redirect('/');
                         })
                         .catch(function (err) {

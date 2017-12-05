@@ -34,6 +34,13 @@
 		<div class="input-field col s12">	
 			<label class="grey-text text-lighten-3" style="font-size: 20px;" for="child">Child Name</label>
 		    <input type="text" name="childname" id="childname" required>
+        </div>
+        <div class="input-field col s12">
+            <label class="grey-text text-lighten-3" style="font-size: 20px;" for="child">Child Email</label>
+            <input type="text" name="childname" id="childemail" required>
+        <div class="input-field col s12">
+            <label class="grey-text text-lighten-3" style="font-size: 20px;" for="child">Child Class ID</label>
+            <input type="text" name="childname" id="classID" required>
 		</div>    
 		<br>
         <button class="waves-effect waves-black btn-flat" id="add-child" style="margin: 20px;"type="submit">Add Child</button>
@@ -50,13 +57,19 @@
         var email = $("#email").val();
         var password = $("#password").val();
         var phonenum = $("#phone").val();
+        var childname = $("#childname").val();
+        var childemail = $("#childemail").val();
+        var classID = $("#classID").val();
 
         var newUser = {
             username: username,
             password: password,
             phoneNumber: phonenum,
             address: address,
-            email: email
+            email: email,
+            childname: childname,
+            childemail: childemail,
+            classid: classID
         };
 
         console.log(newUser);
