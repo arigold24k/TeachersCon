@@ -5,7 +5,7 @@ var methodOverride = require('method-override');
 var cookieParser = require('cookie-parser');
 
 const app = express();
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 8080;
 app.use(express.static("public"));
 
 app.use(cookieParser("secretCookie"));

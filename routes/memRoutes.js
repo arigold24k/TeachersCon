@@ -21,6 +21,10 @@ router.get('/profile', function (req, res) {
     res.render('members');
 });
 
+router.get('/feedback', function (req, res) {
+    res.render('feedback');
+});
+
 router.get('/chat', function (req, res) {
     res.render('chat');
 });
