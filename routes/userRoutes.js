@@ -1,5 +1,5 @@
 const authentication =  require('../controllers/authenticationController');
-var parent = require("../fucntions/parent");
+
 const jwt = require('jsonwebtoken');
 const jwtExp = require('express-jwt');
 
@@ -16,28 +16,7 @@ router.get('/register', function (req, res) {
 
 router.get("/reportcard", function(req, res) {
 //call function from teacherorm
-    parent.retrieve(function (data) {
-        console.log(data);
-        var hbsObject;
-        if(data === undefined) {
-            console.log("no data");
-            res.render("reportcard");
-        }else {
-            console.log(data);
-            var average = ((Number(data[0].math) + Number(data[0].reading) + Number(data[0].socialstudies) + Number(data[0].science))/ 4);
-            hbsObject = {
-                name: data[0].username,
-                math: data[0].math,
-                reading: data[0].reading,
-                socialstudies: data[0].socialstudies,
-                science: data[0].science,
-                average: average
-            };
-            console.log(data);
-            console.log(hbsObject);
-            res.render("reportcard", hbsObject);
-        }
-    });
+
 
 });
 

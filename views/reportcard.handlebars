@@ -15,7 +15,7 @@
 
 <div class="row center grey-text text-lighten-3">
     <div class="col s12">Student Name: </div>
-    <div class="col s12">{{name}}</div>
+    <div class="col s12"><span id="name"></span></div>
 </div>
 
 <div class="row center grey-text text-lighten-3">
@@ -31,19 +31,19 @@
         <tbody>
         <tr>
             <td>Math</td>
-            <td>{{math}}</td>
+            <td><span id="math"></span></td>
         </tr>
         <tr>
             <td>Reading</td>
-            <td>{{reading}}</td>
+            <td><span id="reading"></span></td>
         </tr>
         <tr>
             <td>Social Studies</td>
-            <td>{{socialstudies}}</td>
+            <td><span id="socialstudies"></span></td>
         </tr>
         <tr>
             <td>Science</td>
-            <td>{{science}}</td>
+            <td><span id="science"></span></td>
         </tr>
         </tbody>
     </table>
@@ -60,8 +60,31 @@
 
         <tbody>
         <tr>
-            <td>{{average}}</td>
+            <td><span id="average"></span></td>
         </tr>
         </tbody>
     </table>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script>
+    $(document).on("ready", function () {
+        var path = window.location.pathname;
+        var email = localStorage.getItem("email");
+        $.ajax({
+            method: "GET",
+            url: path + "/" + email,
+            headers: {
+                "Authorization": "Bearer " + Cookies.get('token')
+            }
+        }).then(function(response) {
+            console.log(response);
+            $("#name").html(response.name);
+            $("#math").html(response.math);
+            $("#reading").html(response.reading);
+            $("#socialstudies").html(response.socialstudies);
+            $("#science").html(response.science);
+            $("#average").html(response.average);
+        })
+    })
+
+</script>

@@ -49,14 +49,15 @@
         var email = localStorage.getItem("email");
         console.log("this is the email", email);
 
-        $.ajax({
-            url: path + "/reportcard",
-            type: 'GET',
-            data: email
-        }).done(function(data) {
-            console.log('protected data', data);
-            window.location.href = path + "/reportcard";
-        });
+//        $.ajax({
+//            url: path + "/reportcard",
+//            type: 'GET',
+//            data: email
+//        }).done(function(data) {
+//            console.log('protected data', data);
+//
+//        });
+        window.location.href = path + "/reportcard";
 
 
                     // Reload the page to get the updated list
