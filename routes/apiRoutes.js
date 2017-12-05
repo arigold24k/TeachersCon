@@ -1,10 +1,8 @@
 const authentication =  require('../controllers/authenticationController');
 const router = require('express').Router();
+var parent = require("../fucntions/parent");
 
-router.get('/protected/api/data', function(req, res) {
-// query your database
-// send json data
-    res.status(200).json({ data: data });
-});
+
+
 
 module.exports = router;

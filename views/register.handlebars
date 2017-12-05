@@ -36,6 +36,7 @@
 		    <input type="text" name="childname" id="childname" required>
 		</div>    
 		<br>
+        <button class="waves-effect waves-black btn-flat" id="add-child" style="margin: 20px;"type="submit">Add Child</button>
 	    <button class="waves-effect waves-light btn black" type="submit" id="registerbtn">Register</button>
 	</form>
 </div>
@@ -53,7 +54,7 @@
         var newUser = {
             username: username,
             password: password,
-            phonenum: phonenum,
+            phoneNumber: phonenum,
             address: address,
             email: email
         };
@@ -66,11 +67,25 @@
         }).then(function() {
                     console.log("Added a new Parent");
                     // Reload the page to get the updated list
-                    window.location.href = "/login";
+                    window.location.href = "/";
                 }
         );
 
-    })
-
+    });
+    $(document).on("click", "#add-child", function() {
+        event.preventDefault();
+        console.log("button works");
+        var kids = $("<div>");
+        kids.addClass("input-field col s12");
+        kids.append("<label class='grey-text text-lighten-3' style='font-size: 20px;' for='child'>Child Name</label>");
+        kids.append("<input type='text' name='childname' id='childname' required>");
+        kids.append("<a class='dropdown-button btn grey-text text-lighten-3' style='font-size: 20px;' href='#' data-activates='dropdown1'>Class</a>");
+        kids.append("<ul id='dropdown1' class='dropdown-content'>");
+        kids.append("<li><a href=''>Class A - 1</a></li>");
+        kids.append("<li><a href='#!'>Class B - 2</a></li>");
+        kids.append("<li class='divider'></li>");
+        kids.append(" </ul>");
+        $("#input_child").append(kids);
+    });
 
 </script>

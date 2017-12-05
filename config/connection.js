@@ -25,6 +25,14 @@ connection.connect(function(err) {
     console.log("connected as id " + connection.threadId);
 });
 
+var del = connection._protocol._delegateError;
+connection._protocol._delegateError = function(err, sequence){
+    if (err.fatal) {
+        console.trace('fatal error: ' + err.message);
+    }
+    return del.call(this, err, sequence);
+};
+
 
 
 

@@ -10,4 +10,5 @@ module.exports = function(app) {
 
   // POST route for logging in the user
   app.post('/login', authentication.login);
-}
+
+};

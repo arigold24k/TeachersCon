@@ -30,6 +30,8 @@
           password: $("#psw").val()
         };
 
+        localStorage.setItem("email",$("#email").val());
+
         $.ajax("/login", {
             type: "POST",
             data: newUser

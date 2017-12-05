@@ -42,7 +42,48 @@
 </div>
 
 <script>
-    
+    var path = window.location.pathname;
+    $(document).on("click", "#progress", function () {
+        event.preventDefault();
+//        window.location.href = window.location.pathname + "/reportcard";
+        var email = localStorage.getItem("email");
+        console.log("this is the email", email);
+
+        $.ajax({
+            url: path + "/reportcard",
+            type: 'GET',
+            data: {
+                email
+            }
+            // send Authorization header
+            // embedding jwtAuthToken from cookie
+//                        headers: {
+//                            "Authorization": "Bearer " + Cookies.get('token')
+//                        }
+        }).done(function(data) {
+            console.log('protected data', data);
+            window.location.href = path + "/reportcard";
+        });
+
+
+                    // Reload the page to get the updated list
+
+    });
+
+    $(document).on("click", "#calendar", function () {
+        event.preventDefault();
+        window.location.href = path + "/chat";
+    });
+
+    $(document).on("click", "#message", function () {
+        event.preventDefault();
+        window.location.href = path + "/message";
+    });
+
+    $(document).on("click", "#chat", function () {
+        event.preventDefault();
+        window.location.href = path + "/chat";
+    });
 
 
 </script>

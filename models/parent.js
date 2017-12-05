@@ -7,6 +7,7 @@ module.exports = function(sequelize, DataTypes) {
         email: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
             validate: {
                 len: [1, 40]
             }
@@ -17,7 +18,8 @@ module.exports = function(sequelize, DataTypes) {
         },
         phoneNumber: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
+            defaultValue: "111-111-1111",
             validate: {
                 len: [1,40]
             }

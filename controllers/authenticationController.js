@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const db = require('../models');
 
+
+
 const exp = {
     logout: function (req, res) {
         res.clearCookies('token');
@@ -30,13 +32,13 @@ const exp = {
                         username: req.body.username,
                         email: req.body.email,
                         address: req.body.address,
-                        phoneNumber: req.body.phonenum,
+                        phoneNumber: req.body.phoneNumber,
                         password: hash,
 
                     })
                         .then(function (data) {
                             console.log(data);
-                            res.redirect('/login');
+                            res.redirect('/');
                         })
                         .catch(function (err) {
                             console.log(err);
@@ -106,5 +108,6 @@ const exp = {
             //res.status(400).send({ 'status': 'Username or password is not valid.' });
         });
     },
+
 };
 module.exports = exp;
