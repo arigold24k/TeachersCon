@@ -98,7 +98,7 @@ const exp = {
                         signed: true
                     });
                     // redirect user to secure app
-                    res.redirect('/members')
+                    res.redirect('/members');
                 }
             }
             }).catch(function (err) {

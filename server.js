@@ -28,9 +28,10 @@ app.set('view engine', 'handlebars');
 const jwt = require('jsonwebtoken');
 const jwtExp = require('express-jwt');
 const config = require('./config/config');
-
 require('./routes/authRoutes')(app);
-require('./routes/htmlRoutes')(app);
+require('./routes/userRoutes');
+// require('./routes/htmlRoutes')(app);
+var memRoutes = require("./routes/memRoutes");
 var userRoutes = require('./routes/userRoutes');
 
 
@@ -39,16 +40,14 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 // Cookie parser used to sign the cookie
-
-
-
 app.get('/members', jwtExp({
     secret: 'secretCookie',
     getToken: function fromCookie(req) {
         if (req.signedCookies) {
             return req.signedCookies.jwtAuthToken;
+        }else{
+            return null;
         }
-        return null;
     },
     credentialsRequired: false
 }), function (req, res, next) {
@@ -59,7 +58,7 @@ app.get('/members', jwtExp({
         res.redirect('/login');
     }
 });
-app.use('/members', userRoutes);
+app.use('/members', memRoutes);
 app.use('/', userRoutes);
 
 db.sequelize.sync({ force: false })
