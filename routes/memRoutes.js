@@ -35,7 +35,7 @@ router.get('/profile', function(req, res) {
 
 router.get("/reportcard", function(req, res) {
 //call function from teacherorm
-    console.log(req.body.email);
+    console.log(req);
     parent.retrieve(req.body.email, function (data) {
         console.log(data);
         var hbsObject;

@@ -52,14 +52,7 @@
         $.ajax({
             url: path + "/reportcard",
             type: 'GET',
-            data: {
-                email
-            }
-            // send Authorization header
-            // embedding jwtAuthToken from cookie
-//                        headers: {
-//                            "Authorization": "Bearer " + Cookies.get('token')
-//                        }
+            data: email
         }).done(function(data) {
             console.log('protected data', data);
             window.location.href = path + "/reportcard";
