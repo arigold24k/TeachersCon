@@ -17,7 +17,7 @@
     "username": "root",
     "password": null,
     "database": "JAWSDB_URL",
-    "host": "127.0.0.1",
+    "host": "k3xio06abqa902qt.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }
