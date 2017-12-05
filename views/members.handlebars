@@ -4,7 +4,7 @@
 
 <div class ="row center">
 
-    <div class="welcome" style="font-size: 15px;">
+    <div class="welcome" style="font-size: 24px;">
     Welcome
         <ul>
             <li>
@@ -48,15 +48,24 @@
 //        window.location.href = window.location.pathname + "/reportcard";
         var email = localStorage.getItem("email");
         console.log("this is the email", email);
-
         $.ajax({
             url: path + "/reportcard",
-            type: 'GET',
-            data: email
-        }).done(function(data) {
-            console.log('protected data', data);
-            window.location.href = path + "/reportcard";
+            type: 'POST',
+            data: {
+                email: email
+            }
+        }).done(function(response) {
+            $.ajax({
+                url: path + "/reportcard1",
+                type: 'POST',
+                data: response
+            }).done(function(data) {
+                console.log('protected data', data);
+                window.location.href = path + "/reportcard1";
+            });
         });
+
+
 
 
                     // Reload the page to get the updated list
@@ -65,7 +74,7 @@
 
     $(document).on("click", "#calendar", function () {
         event.preventDefault();
-        window.location.href = path + "/chat";
+        window.location.href = path + "/calendar";
     });
 
     $(document).on("click", "#message", function () {
