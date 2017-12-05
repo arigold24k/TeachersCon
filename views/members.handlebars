@@ -48,23 +48,13 @@
 //        window.location.href = window.location.pathname + "/reportcard";
         var email = localStorage.getItem("email");
         console.log("this is the email", email);
-        $.ajax({
-            url: path + "/reportcard",
-            type: 'POST',
-            data: {
-                email: email
-            }
-        }).done(function(response) {
             $.ajax({
-                url: path + "/reportcard1",
-                type: 'POST',
-                data: response
+                url: path + "/reportcard?email=" + email,
+                type: 'GET',
             }).done(function(data) {
                 console.log('protected data', data);
-                window.location.href = path + "/reportcard1";
+                window.location.href = path + "/reportcard";
             });
-        });
-
 
 
 
