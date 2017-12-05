@@ -22,7 +22,7 @@ app.set('view engine', 'handlebars');
 
 
 // app.listen(PORT, function() {
-//   console.log("Listening on PORT: " + PORT);
+  console.log("Listening on PORT: " + PORT);
 // });
 
 const jwt = require('jsonwebtoken');

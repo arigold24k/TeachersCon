@@ -1,5 +1,5 @@
 {
-  "name": "TeachersCon",
+  "name": "TeacherCon",
   "version": "1.0.0",
   "description": "Teacher Parent Student App",
   "main": "server.js",
