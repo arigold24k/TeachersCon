@@ -65,7 +65,7 @@ db.sequelize.sync({ force: false })
 
     .then(function() {
         http.listen(PORT, function() {
-            console.log('http listening on *:8080');
+            console.log('http listening on *:', PORT);
         });
     });
 

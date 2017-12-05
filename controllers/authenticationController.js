@@ -39,7 +39,7 @@ const exp = {
                         .then(function (data) {
                             console.log("this is the data from the first call", data);
                             var classname;
-                            if(req.body.classID === 1) {
+                            if(req.body.classID === '1') {
                                 classname = "A"
                             }else {
                                 classname= "B"
