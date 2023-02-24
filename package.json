@@ -28,7 +28,7 @@
     "method-override": "^2.3.10",
     "mysql": "^2.15.0",
     "mysql2": "^1.5.1",
-    "sequelize": "^4.26.0",
+    "sequelize": "^6.29.0",
     "socket.io": "^2.0.4"
   }
 }
